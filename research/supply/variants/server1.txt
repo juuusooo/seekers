@@ -1,0 +1,7 @@
+base
+W wkMon=-0.10,wkTue=-0.04
+Wmild wkMon=-0.05,wkTue=-0.02
+due11 dueCapPer=0.11
+W+due11 wkMon=-0.10,wkTue=-0.04,dueCapPer=0.11
+L backK=6,backAt=0.04,backDown=0.08
+W+due11+L wkMon=-0.10,wkTue=-0.04,dueCapPer=0.11,backK=6,backAt=0.04,backDown=0.08

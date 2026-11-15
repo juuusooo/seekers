@@ -1,0 +1,114 @@
+base, held out: margin v4 18153 / T 16738 / T2 15971; ranked 157 / 155 / 153 of 158; orders 443
+
+  # idea                           family                       | search |   HELD margin v4      T     T2 | orders ranked v4/T/T2 worst T2
+  1 due0.18+lateW1+capConst0.5     K combo                      |  +1312 |  +1171      +664   +760   +879 |    +14  157/157/157     91.2
+  2 due0.18+lateW1.5+floor1.20     K combo                      |  +1373 |  +1131      +494   +655   +926 |     -8  157/157/157     93.9
+  3 due0.18+lateW1+L_linear        K combo                      |  +1339 |  +1091      +494   +726   +810 |     -5  157/157/157     90.8
+  4 due0.18+lateW1+floor1.24       K combo                      |  +1340 |  +1065      +446   +654   +847 |     -4  157/157/157     90.8
+  5 due0.18+lateW1                 K combo                      |  +1248 |   +986      +402   +599   +707 |     -8  157/157/157     91.1
+  6 due0.18+lateW1+short-0.06      K combo                      |  +1286 |   +982      +367   +579   +773 |     -7  157/157/157     91.1
+  7 due0.11+lateW1                 K combo                      |  +1228 |   +915      +298   +528   +671 |    -11  157/157/157     91.1
+  8 due0.18+lateW1+sameDay+0.03    K combo                      |  +1162 |   +884      +214   +483   +697 |    -13  157/157/157     91.2
+  9 lateW1.5                       G lateness charge            |  +1170 |   +875      +184   +432   +697 |    -19  157/157/157     92.7
+ 10 short-0.06+lateW1              K combo                      |  +1203 |   +844      +164   +454   +655 |    -12  157/157/157     92.0
+ 11 lateW1                         G lateness charge            |  +1199 |   +839      +195   +456   +603 |    -13  157/157/157     92.2
+ 12 lateW2                         G lateness charge            |  +1092 |   +752       +41   +299   +597 |    -24  157/157/157     93.8
+ 13 short-0.06+long+0.10+lateW1    K combo                      |  +1096 |   +708       +24   +331   +550 |    -17  157/157/157     91.0
+ 14 lateW0.5                       G lateness charge            |   +810 |   +510       +68   +196   +379 |     -7  157/157/156     90.0
+ 15 rampTop2.0                     H early ramp                 |   +489 |   +408       -11    +21    +11 |     +2  157/157/157     91.2
+ 16 rampTop1.8                     H early ramp                 |   +420 |   +349       +62    +43     -8 |     +1  157/157/157     90.4
+ 17 steepOpen1.5                   H urgent fees                |   +411 |   +286      +110    +59    +84 |     +1  157/157/156     90.0
+ 18 steepStep0.25                  H urgent fees                |   +343 |   +221       +58    +21     +9 |     +1  157/157/155     88.9
+ 19 L_optuna                       J backlog rule               |   +280 |   +156      +108    +71     +4 |     +6  157/157/155     89.2
+ 20 capConst2_lam3                 B capacity charge            |   +109 |   +148       +28    +42     -3 |     -6  157/156/155     89.1
+ 21 due0.11                        F day cap                    |     +5 |   +147      +168   +164   +143 |     +3  157/155/153     88.0
+ 22 due0.13                        F day cap                    |   -101 |   +136      +316   +205   +202 |     +6  157/154/154     88.0
+ 23 sameDay-0.03                   D same-day price             |    -69 |   +124      +277   +207   +223 |     +7  157/155/154     88.2
+ 24 pairHold6h                     I pairs                      |   +126 |   +118       +47    +85    +60 |     +0  157/156/153     88.5
+ 25 hardChance0.9                  E booking chance             |    -26 |   +109       +73    +25     -5 |     -2  157/155/154     88.9
+ 26 pairSlack4h                    I pairs                      |   +146 |   +106      +117    +80    +63 |     -1  157/155/153     88.4
+ 27 due0.18                        F day cap                    |   -130 |   +100      +328   +254   +239 |     +7  157/154/153     88.3
+ 28 sameDayMin4h                   D same-day cut-off           |    +16 |    +94       +50    +95    +50 |     +1  157/156/155     88.6
+ 29 lateFee0.6                     H late fee                   |   +162 |    +84       -12    -22    -78 |     +1  157/157/155     89.3
+ 30 L_urgent24h                    J backlog rule               |    +14 |    +81       +47    +71    +29 |     +6  157/157/155     89.5
+ 31 fullPrice0.15                  F full price                 |    +32 |    +78      +199    +44   +136 |     +4  157/156/153     88.2
+ 32 sameDayMin5h                   D same-day cut-off           |    -31 |    +77       +38     -8    +51 |     +1  157/154/155     89.7
+ 33 hardChance0.88                 E booking chance             |    -40 |    +74        +7    -26     +9 |     -1  157/156/156     89.9
+ 34 L_linear                       J backlog rule               |   +297 |    +70       +31    +18    -47 |     +2  157/156/154     86.9
+ 35 floor1.32                      C price floor                |    +42 |    +66       -33    +27    -77 |     -7  157/155/154     88.8
+ 36 pairSlack2.5h                  I pairs                      |     -6 |    +64       +32    +81    +31 |     -1  157/154/154     89.1
+ 37 floor1.24                      C price floor                |    +50 |    +63      +115    +75    +62 |     +4  157/155/153     88.4
+ 38 floor1.2                       C price floor                |    -22 |    +57      +132   +105    +55 |     +7  157/153/153     87.9
+ 39 openMax1.4                     H opening fee                |    -10 |    +45       +41    -36     -7 |     -1  157/157/153     88.6
+ 40 minSlack2h                     D slack                      |   -118 |    +38      +123    +14    +65 |     +2  157/157/153     88.1
+ 41 openMin0.75                    H opening fee                |   +190 |    +26      -104    -21   -119 |     +0  157/154/154     88.9
+ 42 short-0.05_under1.5h           A short cars cheaper         |     -4 |    +24       +81     +0    +40 |     +2  157/154/154     87.5
+ 43 townCap4                       F town cap                   |    +47 |    +16        +3    +21    +15 |     +0  157/156/153     88.2
+ 44 ceil2.2                        C price ceiling              |     +7 |    +15       +48     +8    +26 |     -0  157/154/153     88.6
+ 45 floor1.3                       C price floor                |    -52 |    +11       +24    -41     -6 |     -3  157/156/155     88.4
+ 46 raiseMax0.15                   H raises                     |    +21 |     +3       -13     -6    -23 |     -0  157/155/153     88.2
+ 47 floor1.26                      C price floor                |    -47 |     +2       +81    +21    +27 |     +3  157/155/153     88.2
+ 48 minProfit0.15                  C least profit               |     +0 |     +0        -0     +0     +0 |     +0  157/155/153     88.2
+ 49 openMax1.8                     H opening fee                |     +0 |     +0        +0     +0     +0 |     +0  157/155/153     88.2
+ 50 raiseMax0.25                   H raises                     |     +0 |     +0        +0     +0     +0 |     +0  157/155/153     88.2
+ 51 raiseMax0.3                    H raises                     |     +0 |     +0        +0     +0     +0 |     +0  157/155/153     88.2
+ 52 minProfit0.05                  C least profit               |     +0 |     -0        +0     +0     -0 |     +0  157/155/153     88.2
+ 53 pairBack0.10                   I pairs                      |    -11 |    -10       +41    -27     +4 |     +0  157/154/153     88.2
+ 54 short-0.03                     A short cars cheaper         |    -10 |    -14       +21    -21     -4 |     +1  157/153/153     88.2
+ 55 sameDayMin6h                   D same-day cut-off           |    +42 |    -14       -63    -87    -57 |     -0  157/156/155     89.2
+ 56 pairCap1.0                     I pairs                      |    -63 |    -23        +4    -24    -25 |     -0  157/156/153     88.5
+ 57 capLam5                        B capacity charge            |    -37 |    -25      -244   -151    -86 |    -26  157/157/155     88.0
+ 58 short-0.1_under1.5h            A short cars cheaper         |   -139 |    -26       +85    -24    +53 |     +4  157/154/155     87.5
+ 59 capLam4.5                      B capacity charge            |    -27 |    -29       -83    -93   -115 |    -13  157/154/155     88.6
+ 60 short-0.06                     A short cars cheaper         |   -108 |    -30       +52    +19     -6 |     +2  157/154/152     88.0
+ 61 minSlack4h                     D slack                      |     -8 |    -42       -50   -120    -95 |     -1  157/156/154     88.2
+ 62 long+0.1                       A long cars dearer           |   -184 |    -49       -48   -102    -49 |     -4  157/155/154     88.5
+ 63 hardPrice0.3                   E booking chance             |    +81 |    -50      -128    -31    -59 |     -1  157/155/155     88.6
+ 64 short-0.1                      A short cars cheaper         |    -59 |    -59       +87    -11     +3 |     +2  157/154/154     87.5
+ 65 lateCost3                      H cost of no driver          |    +67 |    -60        +7    -24    +43 |    -11  157/154/153     88.8
+ 66 rampWindow12h                  H early ramp                 |    -53 |    -60       -80    -99   -166 |     +0  157/156/154     89.1
+ 67 floorTyp1.0                    A cheap-to-move cars cheaper |   -150 |    -62       +45     +6    -41 |     +1  157/156/153     87.6
+ 68 pairKm45                       I pairs                      |    +21 |    -63       +77    +52    -24 |     -0  157/154/150     86.5
+ 69 townCap2                       F town cap                   |    -35 |    -66        +4    -75    -22 |     -1  157/153/153     87.9
+ 70 floorTyp0.5                    A cheap-to-move cars cheaper |    -88 |    -67       +24     +9    -91 |     +1  157/154/151     87.5
+ 71 fullPrice0.35                  F full price                 |    -86 |    -70       -69   -115    -69 |     -2  157/156/155     88.6
+ 72 rampWindow16h                  H early ramp                 |    -27 |    -76      -174   -259   -272 |     +1  157/155/155     89.5
+ 73 short-0.06_long+0.10           A short cheaper + long deare |   -187 |    -88       -59   -114   -137 |     -3  157/156/154     89.8
+ 74 floorTyp0.25                   A cheap-to-move cars cheaper |     -6 |    -89       -14    -20    -47 |     +1  157/155/151     88.0
+ 75 long+0.05                      A long cars dearer           |    -33 |    -92       +92     -3   -103 |     -2  157/154/149     88.4
+ 76 sameDay+0.03                   D same-day price             |   -243 |    -92      -160   -178   -231 |     -5  157/157/154     88.9
+ 77 capLam3.5                      B capacity charge            |   -134 |    -93      +107    +81    -38 |    +12  157/154/152     88.1
+ 78 floorTyp0.5_ref0.9             A cheap-to-move cars cheaper |   -137 |   -109       +35    -13    -78 |     +1  157/153/154     87.6
+ 79 short-0.03_long+0.05           A short cheaper + long deare |    -12 |   -113        +9    -39    -40 |     -1  157/152/151     89.2
+ 80 hardChance0.8                  E booking chance             |   -138 |   -117       +26    -86    -47 |     +1  157/156/152     86.6
+ 81 long+0.05_over2h               A long cars dearer           |    -92 |   -118       +15    -69    -94 |     -3  157/154/153     88.2
+ 82 capLam3                        B capacity charge            |   -292 |   -131      +260    +41    -18 |    +25  157/155/151     87.9
+ 83 lateFee1.0                     H late fee                   |   -147 |   -137       -46   -186   -187 |     -0  157/157/152     88.5
+ 84 openMin0.8                     H opening fee                |    +18 |   -144      -467   -333   -347 |     -1  157/156/156     89.1
+ 85 steepOpen1.2                   H urgent fees                |   -290 |   -149       -34    -26    -12 |     -1  157/154/151     88.4
+ 86 minBook0.93                    E booking chance             |   -312 |   -151       +69    -60   -141 |     +5  157/154/151     87.8
+ 87 hardPrice0.1                   E booking chance             |   -117 |   -154       +77    -41   -115 |     +3  157/152/152     87.4
+ 88 pairCap0.8                     I pairs                      |   -274 |   -155       +61    -37     -6 |     -0  157/154/152     88.3
+ 89 ceil1.8                        C price ceiling              |   -156 |   -160       -85   -158   -132 |     +1  157/153/154     88.8
+ 90 capConst0.5_lam5               B capacity charge            |   -202 |   -161       -87    -88    -28 |     +0  157/155/152     88.6
+ 91 sameDayMin7h                   D same-day cut-off           |   -112 |   -162      -170   -198   -175 |     -3  157/154/154     89.1
+ 92 long+0.1_over2h                A long cars dearer           |   -217 |   -175      -231   -189    -89 |    -10  157/155/153     88.3
+ 93 rampWindow8h                   H early ramp                 |   -343 |   -177       +42    -37    +37 |     -0  157/154/151     88.3
+ 94 sameDay+0.06                   D same-day price             |   -277 |   -186      -273   -222   -246 |     -8  157/156/155     88.3
+ 95 steepStep0.1                   H urgent fees                |   -254 |   -193       -15    -30    -26 |     -0  157/153/152     88.4
+ 96 capConst0.5_lam4               B capacity charge            |   -475 |   -219      +195    +36    -63 |    +20  157/154/152     88.7
+ 97 minSlack5h                     D slack                      |    -38 |   -226      -286   -270   -210 |     -4  157/153/155     89.6
+ 98 pairHold3h                     I pairs                      |   -392 |   -236       -80   -147    -87 |     +0  157/154/154     88.8
+ 99 capConst0.5_lam4.5             B capacity charge            |   -210 |   -258       +43     -4    -58 |    +10  157/154/153     88.2
+100 minBook0.97                    E booking chance             |   -222 |   -260      -513   -380   -246 |    -15  157/157/155     88.4
+101 pairKm20                       I pairs                      |   -420 |   -270       -38   -151   -132 |     -1  157/156/154     87.9
+102 pairSlack8h                    I pairs                      |   -404 |   -358       -85   -282   -240 |     +1  157/156/151     86.9
+103 capConst0_lam5                 B capacity charge            |   -467 |   -407       +83    +45    +25 |    +23  157/152/152     87.3
+104 capConst0_lam4                 B capacity charge            |   -664 |   -426      +200    +20   -108 |    +36  157/151/149     87.7
+105 long+0.2                       A long cars dearer           |   -376 |   -440      -423   -350   -305 |    -13  157/154/153     86.8
+106 sameDay+0.1                    D same-day price             |   -303 |   -468      -560   -499   -529 |    -12  157/156/155     87.7
+107 lateCost6                      H cost of no driver          |   -378 |   -528      -457   -561   -615 |     +2  157/157/153     87.8
+108 openMin0.65                    H opening fee                |   -545 |   -545        -4   -165   -152 |     -0  157/152/150     88.6
+109 pairHold2h                     I pairs                      |   -690 |   -563      -159   -287   -270 |     +0  157/153/151     88.6
+110 rampTop1.4                     H early ramp                 |   -912 |   -835      -186   -170    -73 |     -2  157/152/146     88.3
+111 lateCost8                      H cost of no driver          |   -578 |   -870      -951   -930  -1078 |     -0  157/156/154     89.5

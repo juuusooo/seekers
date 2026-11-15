@@ -1,0 +1,4 @@
+base
+safe1+cap dueCapPer=0.18,lateW=1,capConst=0.5
+safe0.5+cap dueCapPer=0.18,lateW=0.5,capConst=0.5
+safe0.5 dueCapPer=0.18,lateW=0.5

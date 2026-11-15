@@ -1,0 +1,23 @@
+base
+pWeek0.03 pWeek=0.03
+pWeek0.08 pWeek=0.08
+pWeek0.12 pWeek=0.12
+pWeek0.2 pWeek=0.2
+pDay0.1 pDay=0.1
+pDay0.2 pDay=0.2
+pDay0.28 pDay=0.28
+pS0.07 pS=0.07
+pS0.13 pS=0.13
+pWeek0.08_pDay0.2 pWeek=0.08,pDay=0.2
+pWeek0.12_pDay0.2 pWeek=0.12,pDay=0.2
+pWeek0.12_pDay0.28 pWeek=0.12,pDay=0.28
+pWeek0.2_pDay0.28 pWeek=0.2,pDay=0.28
+pMean-0.03 pMean=-0.03
+pMean-0.015 pMean=-0.015
+pMean0.015 pMean=0.015
+pMean0.03 pMean=0.03
+ORACLE_week oraWeek=1
+ORACLE_week_tight oraWeek=1,pWeek=0.01
+ORACLE_week+days oraWeek=1,oraDay=1
+ORACLE_week+days_tight oraWeek=1,oraDay=1,pWeek=0.01,pDay=0.03
+ORACLE_days_only oraDay=1

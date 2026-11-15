@@ -1,0 +1,8 @@
+rows 146390, worlds 336, seeds 48; cost mean 0.984 sd 0.405; held out 36390 rows
+  plan fee alone                     R2 0.050
+  shipped trees (BEST6-8 weeks)      R2 0.260, weighted by typical fee 0.211, mean predicted 0.952 vs actual 0.985; lowest / middle / top tenth predicted/actual 0.75/0.76 0.90/0.92 1.36/1.49
+  R0 shipped recipe, refitted        R2 0.299, weighted by typical fee 0.237, mean predicted 0.973; lowest / middle / top tenth 0.75/0.75 0.90/0.92 1.49/1.52
+  R3 weights + monotone              R2 0.292, weighted by typical fee 0.231, mean predicted 0.970; lowest / middle / top tenth 0.73/0.75 0.90/0.91 1.48/1.51
+  R6 bigger trees                    R2 0.297, weighted by typical fee 0.234, mean predicted 0.972; lowest / middle / top tenth 0.73/0.75 0.90/0.92 1.50/1.51
+  R8 bigger + weights + monotone     R2 0.295, weighted by typical fee 0.231, mean predicted 0.971; lowest / middle / top tenth 0.72/0.75 0.90/0.90 1.50/1.50
+wrote kit-supply/core/data/cost_alt.json: costAlt=1 = R0 shipped recipe, refitted, costAlt=2 = R3 weights + monotone, costAlt=3 = R6 bigger trees, costAlt=4 = R8 bigger + weights + monotone

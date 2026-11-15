@@ -1,0 +1,22 @@
+== world T (tight): trees fitted in v4 vs trees fitted in T
+variant                              n  margin   diff   ±se     b/w  smooth   ±se  scored orders rank  onT% worst
+other-world trees                  158   17621     +0     0   0/0        +0     0      +0  437.1  157  97.3  92.7
+other + resK 0.5                   158   17549    -72    39  66/91      -76    40     -72  442.9  157  97.1  92.7
+other + resK 1.0                   158   17490   -131    51  71/86     -148    55    -131  448.2  157  97.1  92.5
+other + resK 1.5                   158   17502   -119    54  73/84     -155    64    -119  453.6  157  97.0  91.6
+other + resK 1 resN 10             158   17461   -160    55  73/84     -173    58    -160  452.9  157  96.9  92.4
+own-world trees                    158   17651    +30    57  76/81      +38    58     +30  417.2  157  98.0  94.3
+own + resK 1                       158   17688    +67    45  86/71      +74    46     +67  436.6  157  97.9  93.9
+shipped (server) trees             158   16738   -883    83  27/130   -1365   185   -1074  438.2  155  95.3  89.1
+shipped + resK 1                   158   16754   -867    87  31/126   -1441   199   -1080  453.0  155  95.2  89.3
+== world v4: trees fitted in T vs trees fitted in v4
+variant                              n  margin   diff   ±se     b/w  smooth   ±se  scored orders rank  onT% worst
+other-world trees                  158   18699     +0     0   0/0        +0     0      +0  420.3  157  98.9  96.7
+other + resK 0.5                   158   18719    +20    36  82/75      +20    36     +20  433.0  157  98.9  96.6
+other + resK 1.0                   158   18866   +167    45 104/53     +167    45    +167  445.4  157  98.8  96.6
+other + resK 1.5                   158   18843   +144    53  94/63     +144    53    +144  457.2  157  98.7  96.0
+other + resK 1 resN 10             158   18880   +181    49 106/51     +181    49    +181  451.8  157  98.8  96.1
+own-world trees                    158   18782    +84    49  97/60      +84    49     +84  440.3  157  98.6  95.9
+own + resK 1                       158   18871   +172    60 100/57     +172    60    +172  458.6  157  98.5  95.9
+shipped (server) trees             158   18153   -546    74  45/112    -546    74    -546  442.7  157  97.6  94.3
+shipped + resK 1                   158   18252   -446    80  57/100    -447    81    -446  463.1  157  97.5  93.0

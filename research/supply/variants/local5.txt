@@ -1,0 +1,8 @@
+base
+due13 dueCapPer=0.13
+due18 dueCapPer=0.18
+lateW1 lateW=1
+due11+lateW1 dueCapPer=0.11,lateW=1
+due13+lateW1 dueCapPer=0.13,lateW=1
+due18+lateW1 dueCapPer=0.18,lateW=1
+due18+lateW2 dueCapPer=0.18,lateW=2

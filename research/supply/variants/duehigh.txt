@@ -1,0 +1,10 @@
+base
+due0.11 dueCapPer=0.11
+due0.12 dueCapPer=0.12
+due0.13 dueCapPer=0.13
+due0.15 dueCapPer=0.15
+due0.18 dueCapPer=0.18
+due0.22 dueCapPer=0.22
+due0.3 dueCapPer=0.3
+due0.5 dueCapPer=0.5
+due1 dueCapPer=1

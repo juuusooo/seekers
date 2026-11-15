@@ -1,0 +1,9 @@
+base
+S1_due18+lateW1 dueCapPer=0.18,lateW=1
+S2_+cap0.5 dueCapPer=0.18,lateW=1,capConst=0.5
+S3_+backlog dueCapPer=0.18,lateW=1,capConst=0.5,backK=6,backAt=0.04,backDown=0.08
+S4_+ramp1.8 dueCapPer=0.18,lateW=1,capConst=0.5,backK=6,backAt=0.04,backDown=0.08,rampTop=1.8
+S5_+pairs dueCapPer=0.18,lateW=1,capConst=0.5,backK=6,backAt=0.04,backDown=0.08,rampTop=1.8,pairSlackH=4,pairHoldH=6
+S6_+floor1.24 dueCapPer=0.18,lateW=1,capConst=0.5,backK=6,backAt=0.04,backDown=0.08,rampTop=1.8,pairSlackH=4,pairHoldH=6,markupMin=1.24
+S7_+sameDay-0.03 dueCapPer=0.18,lateW=1,capConst=0.5,backK=6,backAt=0.04,backDown=0.08,rampTop=1.8,pairSlackH=4,pairHoldH=6,markupMin=1.24,sdShift=-0.03
+S7_lateW1.5 dueCapPer=0.18,lateW=1.5,capConst=0.5,backK=6,backAt=0.04,backDown=0.08,rampTop=1.8,pairSlackH=4,pairHoldH=6,markupMin=1.24,sdShift=-0.03

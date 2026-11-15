@@ -1,0 +1,427 @@
+Seekers: the Bahn Spread system that played the final (BEST16, level 8)
+=====================================================================
+
+Final: 19,975 margin, 95.4% on time, 432 orders. On 96 fresh practice weeks it makes 18,738 a week
+(95 of 96 ranked), +515 ± 80 over the previous version on the same weeks.
+
+The rules below were first written for BEST4. Every value in this file is the BEST16 value. Rules
+added after BEST4 are listed in "Added after BEST4" at the end, with their parameters.
+
+One idea drives everything: for every car, the booking model estimates the fee at which a driver
+takes it in time. That number decides which requests to take, what price to quote and what fee to
+pay.
+
+HOW TO RUN
+----------
+cd Bahn-Spread/kit-best
+set -a && source ../.env && set +a          # loads the team keys (never print .env)
+bun core/run.ts --seed my-test-1             # one practice week, level 8
+bun core/run.ts --seed my-test-1 --set capLam=5   # the same week with one value changed
+bash core/tools/sweep.sh 48 m mytest 'base|' 'idea|capLam=5'   # test an idea on 48 seeds
+python3 core/tools/cmp.py mytest base        # difference ± SE, weeks better/worse
+
+HOW IT DECIDES
+--------------
+1. Request arrives
+   Replace the dealer's typical fee by the lane-table prediction (rule 1). Read the note: ready
+   later, must arrive by (rules 2, 3).
+
+2. Options
+   For each delivery option: plan the cheapest fee schedule with the booking model. That gives the
+   expected fee and the chance a driver books in time (rule 6). Drop options under 85% (rule 7);
+   sell 85 to 95% options 0.2 x list dearer (rule 8).
+
+3. Capacity
+   A full pickup town or a full deadline day is priced 0.25 x list higher, not declined (rules 9,
+   10).
+
+4. Price
+   Search 1.28 to 2.0 x list for the price with the highest chance to win x (price - expected fee -
+   4 EUR per driver-hour). Shift -0.05 for a round trip, +0.3 in a competitor outage (rules 11 to
+   14). Decline with 10 x list when nothing is left (rule 16).
+
+5. Won
+   Join an open one-car gig nearby as a two-car gig (split after 4 h unbooked), or post alone
+   (rules 24 to 26). Premium, plates, manual gearbox and charging handled at posting (rules 27 to
+   29).
+
+6. Fees
+   Planned opening fee with hourly raises, early ramp to 1.6 x typical in the last 10 h, deadline
+   warning: 1.3 x typical +0.15 every 30 min, past the last pickup time: back to 1.2 (rules 19 to
+   23).
+
+7. Learn
+   After every answer, refit this week's competitor price level on the last 300 answers (rule 17).
+   Dealer trust counts on-time orders (rule 18).
+
+RULES (all 35, in the order a request meets them)
+-------------------------------------------------
+ 1. Denoise the typical fee (request) [typMinN = 5]
+    Replaces the dealer's typical fee by the lane-table prediction (typ.json: lane + private
+    address + premium + electric; trade-in = 0.50 x sum of legs). Lanes seen fewer than 5 times
+    keep the dealer's number. Used everywhere: prices, gig fees, pairs
+    Why: The typical fee carries about 13% random noise that drivers ignore (booked fee/typical =
+    1.10 when the noise is -15%, 0.88 at +15%)
+    Evidence: +195 ± 128 a week on 48 untouched weeks (h-), +403 ± 119 on 48 screening weeks (m-);
+    gain is on the fee side
+
+ 2. Read the dealer's note (request)
+    Finds "not ready before" (car ready later) and "must arrive by" (earlier deadline) in Finnish,
+    Swedish and English, typos and word hours included
+    Why: Notes that move the ready time or the deadline made 29 to 34% of such orders late
+    Evidence: 612 of 619 ready-later notes read to the minute, 327 of 328 earlier deadlines; +308 ±
+    92 a week over 65 weeks (+94 ± 137 on clean weeks)
+
+ 3. Move the deadline with a late ready day (request)
+    A car ready a day or more later moves its deadline by the same business days (weekends do not
+    count)
+    Why: The rules: a car ready a day later has its deadline moved by a day
+    Evidence: Rules
+
+ 4. Enough time for the drive (request) [minSlackH = 3]
+    An option is sold only if its deadline (or the note's) leaves 3 hours beyond the ready time
+    plus the drive
+    Why: Less slack leaves no time to find a driver
+    Evidence: kit-03 default; tuner o3/o4: 4 hours no better
+
+ 5. Last pickup not passed (request)
+    Drops an option whose last pickup time (deadline minus drive) is already past
+    Why: It cannot be on time
+    Evidence: Rules
+
+ 6. Plan the driver fee per option (request) [lateCost, openMin, openMax, raiseMax, steps = 4, 0.706, 1.6, 0.2, 4]
+    For each option: try every opening fee (0.6 to 1.6 x typical, step 0.05) and hourly raise (0,
+    0.05, 0.1, 0.2; 5 raises), walk hour by hour to the last pickup time with the booking model,
+    keep the lowest expected cost (fee paid + 4 x typical if no driver). Gives the expected fee and
+    the chance a driver books in time
+    Why: The fee at which a driver takes the car in time drives every decision
+    Evidence: Booking model: unseen-week log loss 0.287 vs 0.455 constant; scaling all planned fees
+    by 0.95/1.05/1.10 gives +48 / -286 / -716 a week: the plan is calibrated
+
+ 7. Sell only bookable options (request) [minBookChance = 0.95]
+    An option is sold at the normal price only if a driver books before its last pickup time with
+    95% chance
+    Why: Lates cost refunds, dealer trust and the 90% on-time rule
+    Evidence: kit-07: 0.90 loses ranked weeks; tuner: 0.93 / 0.97 no better
+
+ 8. Hard options are priced up not dropped (request) [hardChance, hardPrice = 0.82, 0.2]
+    An option with a booking chance between 0.85 and 0.95 is still sold, 0.2 x list dearer
+    Why: A dearer price pays for the risk; wins about 25 more orders a week
+    Evidence: kit-10/kit-cmb, part of a bundle +597 ± 129 a week on 48 weeks; tuner o4: 0.1 / 0.3
+    no better
+
+ 9. Town at capacity is priced up (request) [capPerDriver, fullPrice = 3, 0.25]
+    A pickup town is full when our undelivered orders from it reach 3 x the drivers living within
+    30 km. Then the whole request is priced 0.25 x list higher instead of declined
+    Why: Too many of our cars in one town compete for the same few drivers
+    Evidence: Volume set K5e +1,819 ± 170 (kit-ideas); full town priced not declined: part of
+    +1,953 ± 174 (kit-09)
+
+10. Deadline day at capacity is priced up (request) [dueCapPer, fullPrice = 0.1, 0.25]
+    A deadline day (Monday to Friday) is full when our orders due that day reach 0.10 x the week's
+    drivers. An option due on a full day is priced 0.25 x list higher
+    Why: Friday-due orders held 40% of all lates; this cap kept weeks ranked
+    Evidence: Cap at 0.09: 32/32 ranked vs 30/32 (kit-ideas); 0.10 found by tuner o3, +194 ± 71 a
+    week on h- (46/48 ranked vs 47/48)
+
+11. Price choice (price) [markupMin, markupMax = 1.28, 2]
+    One price multiple for the request, searched from 1.28 to 2.0 x list in steps of 0.01 (both
+    moved by the shifts below): the one with the highest chance to win x (price - expected fee -
+    capacity cost). The same multiple goes to every option sold
+    Why: The competitor is 26 to 54% above list, different each week; win odds fall about 10% per
+    1% of price
+    Evidence: Floor 1.28 with capacity cost (row 12): +601 ± 165 a week on h- vs floor 1.38; tuner
+    o4: 1.24 / 1.32 both worse
+
+12. Capacity cost (price) [capLam, capConst = 4, 1]
+    Subtracts 4 EUR x (drive hours + 1) from the margin in the price choice, so a car that holds a
+    driver longer needs a higher price
+    Why: Drivers are the binding constraint at level 8: 43% of quotes sat on the old floor; only 20
+    to 36% of drivers ever book us
+    Evidence: +601 ± 165 a week on h- (with floor 1.28), 47/48 ranked vs 45/48; capLam 3 / 5 / 6 /
+    8 all worse; net per driver-hour now flat 10 to 14 EUR in every segment
+
+13. Round trip discount (price) [pairBack = 0.05]
+    A request whose pickup is within 30 km of an open gig's delivery and whose delivery is within
+    30 km of that gig's pickup is priced 0.05 x list lower
+    Why: It completes a round trip: the driver has no trip home to pay
+    Evidence: Part of +1,953 ± 174 a week (kit-09 pairs bundle); 0.10 no better (+34 ± 68)
+
+14. Competitor outage (price) [outage, outageN, outageGap = 0.3, 6, 0.3]
+    Between 08:00 and 18:00: when at least 6 of today's answers within 80 km of the pickup beat the
+    win model by 0.3 on average, price 0.3 x list higher there
+    Why: Once a week the competitor is down in one region for a working day; there we win 62% even
+    at 1.70 to 1.85 x list
+    Evidence: +465 ± 135 on first 16 weeks, +156 ± 104 over 32 (kit-ideas); 0.45 / 0.5 no better
+
+15. Profit floor (price) [minProfit = 0.1]
+    An option's price must be at least 1.1 x its expected fee, or it is left out
+    Why: Never sell below cost
+    Evidence: kit-03 default
+
+16. Decline (price)
+    When nothing is left the request is answered with 10 x list (a quote that loses). Not answering
+    would cost dealer goodwill
+    Why: Rules: a request not quoted lowers the dealer's willingness; a losing quote does not
+    Evidence: Rules
+
+17. This week's price level (learning) [worldN = 300]
+    After every answer (won or lost), refits one number, the week's competitor level, on our last
+    300 answers (4 Newton steps, prior = how much weeks differ, from model.json). quote() uses it
+    in the win model
+    Why: The competitor's level differs every week by about ±0.59 in log odds
+    Evidence: Window 150 / 600: no better (96-week check: -255 / +126)
+
+18. Dealer trust (learning)
+    Counts each dealer's on-time orders (cap 25), halved by a late order. The win model reads it:
+    each point raises the price the dealer accepts by about 1%
+    Why: Rules: level 8 dealers accept 1% more per on-time order
+    Evidence: D01 trust averages 14.5 of 25 at its requests (0.7 on Monday; 22 by Thursday)
+
+19. Planned schedule (fees) [lateCost, openMin, openMax, raiseMax, steps = 4, 0.706, 1.6, 0.2, 4]
+    A new gig opens at the planned fee and rises hourly by the planned raise (row 6)
+    Why: Drivers book when the fee pays them; the plan finds the cheapest path to a booking in time
+    Evidence: Flat fees (no raises) lose at every level tried: 0.85 to 1.15 x typical, -1,364 to
+    -4,389 a week
+
+20. Early ramp (fees) [rampTop, rampWindowH = 1.45, 10]
+    A gig still open 10 hours before its last pickup time climbs hourly from its last fee to 1.6 x
+    typical, ending 3 hours before the last pickup time
+    Why: Raise early, before the deadline warning, rather than pay the urgent fee
+    Evidence: +820 a week (kit-05); tuner: 1.4 / 1.8 and windows 7 / 13 no better
+
+21. Urgent fee after a deadline warning (fees) [steepOpen, steepStep = 1.3, 0.15]
+    When the world warns (3 hours before the last pickup time, no driver yet): 1.3 x typical, +0.15
+    every half hour, 4 times. A two-car gig is taken apart first
+    Why: After the warning only a higher fee finds a driver
+    Evidence: K5b (with row 22): about +1,100 a week over the defaults 2.0 / 0.25 (kit-05,
+    kit-ideas)
+
+22. Late anyway (fees) [lateFee = 0.832]
+    Once the last pickup time has passed with no driver, the fee goes back to 1.2 x typical, then
+    +0.2 every 6 hours up to 2
+    Why: The car is late whatever we pay; the urgent fee buys nothing more
+    Evidence: Part of K5b (row 21); tuner: 1.0 / 1.4 no better
+
+23. Note deadline warning (fees)
+    When the note's deadline is earlier than the option's, the urgent fee (row 21) starts 3 hours
+    before the note's last pickup time; the world's own warning would come too late
+    Why: The world's warning counts the option's deadline
+    Evidence: Part of the note reader (row 2)
+
+24. Two cars one driver (pairs) [pairKm, pairSlackH = 40, 6]
+    A new one-car order joins an open, unbooked one-car gig of ours when the first car's delivery
+    is within 30 km of the second car's pickup, 6 hours are to spare and the two need at most 12
+    hours of driving. Not for cars with plates, manual licence, urgent or note-changed orders
+    Why: One driver pays one trip to the first pickup and one trip home: two cars book at about
+    0.80 x the sum of their typical fees
+    Evidence: +1,953 ± 174 a week on 32 new weeks (kit-09 bundle); pairKm 45 / pairSlackH 4 no
+    better
+
+25. Pair fee (pairs) [pairCap, pairTop = 0.9, 1.3]
+    A pair's planned schedule is capped at 0.9 x the sum of the typical fees, and its early ramp
+    climbs to 1.3
+    Why: A pair must be cheaper than two single gigs
+    Evidence: Tuner: 0.85 / 0.95 and pairTop steps no better
+
+26. Split an unbooked pair (pairs) [pairHoldH = 3]
+    A two-car gig nobody booked after 4 hours is taken apart; each car goes alone
+    Why: Pairs never booked and split only at the warning were 33% late
+    Evidence: +1,083 ± 243 a week vs no split (kit-09); 2.5 / 5.5 worse
+
+27. Premium cars (posting)
+    A premium car's gig is open to experienced drivers only
+    Why: Rules: fine 150 EUR a car otherwise
+    Evidence: Rules
+
+28. Plates and manual gearbox from the note (posting)
+    "No plates" in the note: the pickup asks for transfer plates. "Manual": only drivers with a
+    manual licence
+    Why: Otherwise the first visit fails (plates or licence) and costs half the fee
+    Evidence: Found 100% of 220 true cases, no false alarm
+
+29. Charging stop (posting)
+    An electric car under 30% charge gets a charging stop
+    Why: Rules: 90 minutes late and a 100 EUR fine otherwise
+    Evidence: Rules
+
+30. Retry a failed visit (posting)
+    Not ready or closed: post again from 2 hours later (or the ready time plus the deadline delay).
+    No plates: bring plates. Licence: manual drivers only
+    Why: The car must still be moved
+    Evidence: Kit starter
+
+31. Repost an expired gig (posting)
+    A gig whose window ended before a driver booked it is posted again without its own windows
+    Why: A late car can still be collected and delivered
+    Evidence: Kit starter
+
+32. Changed order (posting)
+    An order the dealer sends elsewhere is withdrawn and posted again (unless a driver holds it)
+    Why: The world sends the car to the new place
+    Evidence: Kit starter
+
+33. Trade-in over 12 hours (posting)
+    A trade-in whose two legs need more than 12 hours goes as one gig per car
+    Why: Rules: a multi-car gig may plan at most 12 hours
+    Evidence: Rules
+
+34. Booking model (model)
+    Chance a driver books in the next hour: logistic on fee / typical (with bends at 1.0 and 1.4),
+    drivers near pickup and delivery, drive hours, private address, premium, our load in the town,
+    typical fee, time of day, weekday, how long the gig is open, hours left, hours until ready,
+    urgent
+    Why: Fitted on 160 weeks of random fees (kit-03 explore)
+    Evidence: Unseen weeks: log loss 0.287 vs 0.455 for a constant guess
+
+35. Win model (model)
+    Chance the dealer buys at a price: logistic on ln(price / list) (weight -10.1), a weight per
+    pickup and delivery town, drive hours, trade-in, private delivery, same-day offered, number of
+    options, dealer trust (+0.10 a point), dealer lates (-0.10)
+    Why: Fitted on 1.0 million quotes of 1,561 weeks
+    Evidence: Unseen weeks: log loss 0.506 vs 0.633; weeks differ by 0.59 (learned live, row 17)
+
+PARAMETERS (defaults in algo.ts PARAMS; change with --set name=value)
+--------------------------------------------------------------------
+parameter       value   group          unit                  meaning                                                               
+-----------------------------------------------------------------------------------------------------------------------------------
+minBookChance   0.95    which options  chance                Sell at the normal price only if a driver books in time with this chan
+hardChance      0.82    which options  chance                Between this and minBookChance: sell but dearer                       
+hardPrice       0.2     which options  x list                Price rise for such a hard option (0 = drop them)                     
+minProfit       0.1     which options  share                 Price must be at least (1 + this) x expected fee                      
+minSlackH       3       which options  hours                 Deadline must leave this many hours beyond the drive                  
+capPerDriver    3       capacity       x drivers             Town is full at this many of our undelivered orders per driver living 
+dueCapPer       0.1     capacity       x drivers             Deadline day is full at this x the week's drivers of our orders due th
+fullPrice       0.25    capacity       x list                Price rise on a full town or full day                                 
+markupMin       1.28    price          x list                Lowest price multiple searched                                        
+markupMax       2       price          x list                Highest price multiple searched                                       
+capLam          4       price          EUR per driver-hour   Capacity cost subtracted in the price choice                          
+capConst        1       price          hours                 Hours added to the drive in the capacity cost                         
+pairBack        0.05    price          x list                Price cut for a round trip with an open gig of ours                   
+outage          0.3     price          x list                Price rise where the competitor is down                               
+outageN         6       price          answers               Answers near the pickup today needed to call an outage                
+outageGap       0.3     price          share                 How much they must beat the win model                                 
+worldN          300     learning       answers               Answers the week's price level is learned from                        
+lateCost        4       fees           x typical             Cost of a gig without a driver in the fee plan                        
+openMin         0.706   fees           x typical             Lowest opening fee                                                    
+openMax         1.6     fees           x typical             Highest opening fee                                                   
+raiseMax        0.2     fees           x typical per hour    Highest hourly raise                                                  
+steps           4       fees           raises                Number of hourly raises                                               
+rampTop         1.45    fees           x typical             Early ramp target                                                     
+rampWindowH     10      fees           hours                 Early ramp starts this many hours before the last pickup time         
+steepOpen       1.3     fees           x typical             First fee after a deadline warning                                    
+steepStep       0.15    fees           x typical per 30 min  Raise after a deadline warning                                        
+lateFee         0.832   fees           x typical             Fee once the last pickup time has passed (0 = off)                    
+pairKm          40      pairs          km                    Max distance from the first car's delivery to the second car's pickup 
+pairSlackH      6       pairs          hours                 Spare hours needed for a two-car gig                                  
+pairCap         0.9     pairs          x sum of typical      Opening cap of a two-car gig                                          
+pairTop         1.3     pairs          x sum of typical      Early ramp target of a two-car gig                                    
+pairHoldH       3       pairs          hours                 An unbooked two-car gig is split after this many hours                
+typMinN         5       typical fee    lanes                 Lanes seen fewer times keep the dealer's typical fee                  
+
+Tested alternatives per parameter (difference a week against the default):
+  minBookChance  0.93 -29, 0.97 -581 (tuner t-)
+  hardChance     0.80 -36, 0.90 -122
+  hardPrice      0.1 -134 (h-), 0.3 -192 (u-)
+  minProfit      tuner: no better
+  minSlackH      4: -19 (m-), -110 (t-)
+  capPerDriver   2.26 +34, 3.99 +1 (t-)
+  dueCapPer      0.09 -194 (h-), 0.08 -327 (t-)
+  fullPrice      tuner: no better
+  markupMin      1.24 -126, 1.32 -244 (u-, 64 weeks)
+  markupMax      1.8 -51, 2.2 -24
+  capLam         3 -77, 5 -283 (u-, 64 weeks); 6 -584, 8 -584
+  capConst       0 (capLam 5) -108 (h-), 2 (capLam 3) -80
+  pairBack       0.10 +34 ± 68
+  outage         0.45 -84, 0.5 +50
+  worldN         150 -255 (h-), 600 -66 (m-)
+  lateCost       3 -120, 5.3 -301 (t-)
+  openMin        0.5 -841, 0.7 +28
+  openMax        1.4 / 1.8 no change
+  raiseMax       0.15 -19, 0.25 no change
+  rampTop        1.4 +8, 1.8 -195
+  rampWindowH    7 -84, 13 -135
+  steepOpen      1.15 -198, 1.45 -108
+  steepStep      0.1 +84, 0.2 -2
+  lateFee        1.0 +21 (m-), 1.4 -148
+  pairKm         45: -30
+  pairSlackH     4: -123
+  pairCap        0.85 -232, 0.95 -167
+  pairHoldH      2.5 -198, 5.5 -180
+
+RESULTS
+-------
+test                            weeks  old best   this model  diff/week  ± SE   ranked 
+---------------------------------------------------------------------------------------
+final check                     64     14317      15304       +987       116    62/64  
+proof                           48     14675      15674       +999              46/48  
+screening                       48     14648      15634       +986              48/48  
+third set                       48                16053                         46/48  
+ranking round Saturday 09:00    5      68755      72569       +763              5/5    
+
+WHAT DID NOT WORK
+-----------------
+Requote before the dealer decides; flat fees; delayed posting; direct offers (early, chain,
+rescue); buying dealer trust; learning the competitor beyond the week level (day, dealer, place,
+lane shape); competitor lane tables; refitting the booking model on our own weeks; per-lane booking
+offsets; driver counts weighted by completed gigs; per-option prices; same-day premium; capacity
+cost scaled by town, day, load, roster or weekday. Details: research/LEDGER.md.
+
+FILES
+-----
+algo.ts      EDIT HERE: every decision (quote, fees, pair, learn) and every value (PARAMS = best values)
+docs/        MODEL.txt, MODEL.pdf, PARAMS.csv
+core/        machinery, edit only when an idea cannot be written in algo.ts (README: "Editing core files")
+  engine.ts  books, posting, pairs, timers, retries, denoised typical fee, restart in the final
+  run.ts     play one week (practice, --board, --final); week.ts: one practice week + a row in runs/bench.jsonl
+  model.ts   booking and win model; notes.ts note reader; spread.ts + types.ts API client
+  data/      model.json (the two models), typ.json (typical-fee lane table)
+  tools/     sweep.sh, lockweek.sh, cmp.py (testing); fit_typ.py, harvest_req.ts (typ.json)
+
+Added after BEST4 (each proved on fresh weeks, same seeds; numbers are a week vs the version before)
+----------------------------------------------------------------------------------------------------
+BEST5   Competitor price level learned live by week and weekday (online filter)   +419 ± 101 (80 weeks)
+BEST6   Opening fee at least 0.706, late fee 0.832 (were 0.6 and 1.2)            +530 ± 116 (48)
+BEST7   Real site hours read from dealer notes; no plates/manual cars in pairs    +251 ± 94 (48)
+BEST8   Price by deadline day (Monday -0.03, Friday +0.08 x list)                 +120 ± 63 (96)
+BEST9   Realized-cost trees in the price choice (core/data/cost.json)             +644 ± 106 (48)
+BEST10  Price floor follows the learned competitor level                          +222 ± 58 (84)
+BEST11  Fee tilt by gig size (removed again in BEST15)
+BEST12  Competitor outage as a belief over regions                                +345 ± 94 (72)
+BEST13  Planned fees x 0.95 for gigs posted from Thursday                          +179 ± 35 (72)
+BEST14  Competitor level per lane in the filter                                   +303 ± 83 (96)
+BEST15  No fee tilt (openTilt 0): margin flat, on time +0.8 to +1.1 points
+BEST16  Fee-only booking shift 0.2; 4 raises, ramp to 1.45; cost weight 1.25;
+        hard options from 0.82; pairs within 40 km, split after 3 h               +515 ± 80 (96)
+
+Parameters added after BEST4 (current values)
+costW          1.25    weight of the realized-cost trees in the cost of the price choice (BEST9; 0 = plan fee only, BEST8)
+costUp         0       lean of that estimate toward its 80th percentile (0 = the mean)
+noteHours      1       (BEST7) 1 = read the real site hours in the note: stop windows inside them (engine), price and fees count the shorter days
+hoursMinLeftH  1.5     … a day's slot with less than this many hours left is skipped for the next day's (engine)
+pairFlags      1       (BEST7) 1 = an order whose note says no plates or manual gearbox is not joined into a two-car gig (engine)
+priceLearn     1       1 = prices from the online filter (BEST5); 0 = the win model of BEST4
+pS             0.1     how sharp the dealer's choice is around the competitor's price (log price)
+pWeek          0.05    how far a week's level can sit from the average (SD, log price)
+pDay           0.14    … a weekday's level from the week's
+pDealer        0       … a dealer's level this week (0 = not learned)
+pLane          0.06    (BEST14; 0 = BEST13) … a lane's level this week (pickup x delivery town, single cars): one more level of the filter, added when the lane is first asked
+pTown          0       … a pickup or delivery town's level this week (0 = not learned)
+dueMon         -0.03   price shift (× list) for an option due on the next Monday or later
+dueFri         0.08    … for an option due on Friday
+floorLvl       1       (BEST10) the lowest price follows the learned competitor level: markupMin + this x (week + weekday level, log price) when that level is below average (0 = fixed floor, BEST9)
+openTilt       0       (BEST15: 0 = no tilt, for on time; BEST11 to BEST14 played 0.25) fees by gig size: the normal schedule x (tiltRef EUR / typical fee)^this, between 0.67 and 1.5
+tiltRef        60      … the typical fee (EUR a car) that keeps its fees: cheaper gigs get a higher multiple, dearer ones a lower
+outBayes       1       (BEST12; 0 with outageK=0 = BEST11) 1 = the outage is a belief over regions from today's answers (replaces the outageN / outageGap rule); needs outageK
+warBayes       0       (kit-out) 1 = the price-war day is one more state of that belief (competitor x warK everywhere)
+warK           0.8     … the competitor's price on the price-war day, x its usual price
+warFloor       0.2     … how far the price floor falls on a sure price-war day (x list)
+outPriorMax    0.6     … the most belief an outage today gets before any answer (1 / working days left, capped)
+outageK        1.2     (BEST12; proof value 1.2, handbook says 1.3) in a detected outage the dealer's other choice is a backup this many x the competitor's price: the win chance is read against that price (1.3 = the handbook; 0 = off, only the `outage` floor shift)
+floorTyp       0       (kit-out) lower price floor for cars that are cheap to move: floor shift -this x (floorTypRef - typical fee / list price) when positive
+floorTypRef    0.8     … the typical fee / list price below which the floor starts to fall
+feeMon         1       fees by posting day: all planned fees x this for a gig posted on the first Monday
+feeMid         1       … posted on Tuesday or Wednesday
+feeLate        0.95    (BEST13; 1 = BEST12) … posted from Thursday on
+bookShift      0.2     (BEST16; 0 = BEST15) the fee schedules assume drivers book a little sooner: added to the booking model's hourly logit in the fee plan
+bookQuote      0       1 = that shift also counts in the price choice and in which options are sold (more orders, costs on time: not used)

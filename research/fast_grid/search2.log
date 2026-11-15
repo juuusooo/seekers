@@ -1,0 +1,16 @@
+good single moves: 30
+round 0: best so far v4 17,883 (96/96) v5 16,972 (92/96) | accept +395 ± 80: openMax=1,steepOpen=2,steepStep=0.4
+round 1: best so far v4 18,176 (96/96) v5 17,028 (95/96) | accept +170 ± 49: lateFee=0.74,openMax=1,outageN=10,steepOpen=2,steepStep=0.4
+round 2: best so far v4 18,295 (96/96) v5 17,181 (96/96) | no move
+round 3: best so far v4 18,295 (96/96) v5 17,181 (96/96) | no move
+round 4: best so far v4 18,295 (96/96) v5 17,181 (96/96) | no move
+round 5: best so far v4 18,295 (96/96) v5 17,181 (96/96) | no move
+round 6: best so far v4 18,295 (96/96) v5 17,181 (96/96) | no move
+round 7: best so far v4 18,295 (96/96) v5 17,181 (96/96) | no move
+round 8: best so far v4 18,295 (96/96) v5 17,181 (96/96) | no move
+round 9: best so far v4 18,295 (96/96) v5 17,181 (96/96) | no move
+round 10: best so far v4 18,295 (96/96) v5 17,181 (96/96) | no move
+round 11: best so far v4 18,295 (96/96) v5 17,181 (96/96) | no move
+round 12: best so far v4 18,295 (96/96) v5 17,181 (96/96) | no move
+round 13: best so far v4 18,295 (96/96) v5 17,181 (96/96) | no move
+FINAL lateFee=0.74,openMax=1,outageN=10,steepOpen=2,steepStep=0.4

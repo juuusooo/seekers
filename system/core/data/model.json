@@ -1,0 +1,1093 @@
+{
+ "version": "2026-11-13 21:02, 160 journal weeks, 1561 quote weeks",
+ "book": {
+  "intercept": -9.332304838751192,
+  "coef": {
+   "r": 5.197618130159577,
+   "r_hi1": -3.249414790162782,
+   "r_hi2": -2.9147426951199575,
+   "ln_nearP": -0.0524827853117822,
+   "ln_nearD": 0.05769031914276139,
+   "ln_nearP80": 0.16733064861039518,
+   "ln_nearD80": 0.115562573753865,
+   "driveH": -0.4703907431858259,
+   "long": 0.27708113340740853,
+   "cars2": 1.1285058481018932,
+   "privP": -1.3255134561556676,
+   "privD": -0.303334928720332,
+   "premium": -0.7965177372319165,
+   "load": -0.4986803195707804,
+   "ln_typ": 1.1458073479247166,
+   "night": -0.1799877816862857,
+   "morning": 1.0779950848000788,
+   "evening": -0.34783182150836145,
+   "late": -0.9688866143636684,
+   "sat": 0.22093164017800873,
+   "sun": -0.69864409064963,
+   "ln_age": -1.0000857385388349,
+   "ln_left": -0.1761766215423891,
+   "tight": -0.45994649270575816,
+   "ln_wait": 0.43824327767003984,
+   "urgent": 0.7298331391058639
+  }
+ },
+ "win": {
+  "intercept": 3.1845448653351434,
+  "coef": {
+   "ln_m": -10.092227419643944,
+   "driveH": -0.044537887618950285,
+   "tradeIn": 0.19032356528593797,
+   "privD": -0.028362187190251565,
+   "sameDay": 0.018764595027866895,
+   "nOpt": -0.05604306487289764,
+   "trust": 0.10048665254958211,
+   "lates": -0.09858008824718809
+  },
+  "pickup": {
+   "espoo": 0.5588661000569592,
+   "hameenlinna": 0.1697701736771545,
+   "helsinki": 0.592998761536732,
+   "hyvinkaa": 0.6159566173624776,
+   "joensuu": 0.011859157720060473,
+   "jyvaskyla": -0.10651464902314818,
+   "kajaani": -0.9298575188360039,
+   "kemi": 0.27398701969231865,
+   "kokkola": -0.03638738989419274,
+   "kotka": -0.6480271857118456,
+   "kouvola": 0.09778924459609362,
+   "kuopio": 0.03987033843231481,
+   "lahti": 0.23018764699663902,
+   "lappeenranta": -0.06770147496012006,
+   "lempaala": 0.1272368876004104,
+   "mikkeli": -0.08236167631041738,
+   "oulu": 0.05202683573899807,
+   "pori": 0.21383305729296523,
+   "porvoo": 0.20274594162202328,
+   "raisio": 0.21528586439404002,
+   "rauma": 0.11576139340808225,
+   "rovaniemi": -0.16412710887561108,
+   "salo": 0.2894139257852448,
+   "savonlinna": -0.025041890999137065,
+   "seinajoki": 0.13281437288206868,
+   "tampere": 0.1506521204112472,
+   "turku": 0.00588268755912388,
+   "vaasa": 0.11944154807938089,
+   "vantaa": 0.8744273695892905,
+   "ylivieska": -0.02723325234385175
+  },
+  "delivery": {
+   "espoo": -0.9546913041733334,
+   "hameenlinna": -0.08382604641949741,
+   "helsinki": -1.0149615012556277,
+   "hyvinkaa": -0.9459841400115495,
+   "joensuu": 0.035904324496019775,
+   "jyvaskyla": 0.06488900293495413,
+   "kajaani": 0.8669212490262034,
+   "kemi": 0.9675126904894736,
+   "kokkola": 0.64733849995266,
+   "kotka": 0.5392123068143764,
+   "kouvola": 0.49537757402032245,
+   "kuopio": 0.3567254073939498,
+   "lahti": -0.10437379279817183,
+   "lappeenranta": 0.3483911048991246,
+   "lempaala": -0.17458250194316005,
+   "mikkeli": 0.4620616623163958,
+   "oulu": -0.11472833253398425,
+   "pori": 0.4557174414121499,
+   "porvoo": -0.7014898466768762,
+   "raisio": -0.1807901481048983,
+   "rauma": 0.47166509505020593,
+   "rovaniemi": 0.818389682926105,
+   "salo": -0.07444833926963298,
+   "savonlinna": 0.87222370795451,
+   "seinajoki": 0.2882012587722929,
+   "tampere": -0.09979976930092173,
+   "turku": -0.07870891356560991,
+   "vaasa": 0.2333223242083352,
+   "vantaa": -1.2664525641552435,
+   "ylivieska": 0.8745387850208844
+  },
+  "worldSd": 0.5929227967255164
+ },
+ "checks": {
+  "book": [
+   {
+    "input": {
+     "x": {
+      "nearP": 23,
+      "nearD": 12,
+      "nearP80": 31,
+      "nearD80": 12,
+      "driveH": 7.2,
+      "cars": 1,
+      "privP": 0,
+      "privD": 0,
+      "premium": 0,
+      "load": 0,
+      "typ": 190.06
+     },
+     "r": 3.0,
+     "t": 3587,
+     "postedAt": 2278,
+     "lastPickupAt": 3647,
+     "readyAt": 3420,
+     "urgent": 1
+    },
+    "chance": 0.015959174456451064
+   },
+   {
+    "input": {
+     "x": {
+      "nearP": 39,
+      "nearD": 2,
+      "nearP80": 58,
+      "nearD80": 3,
+      "driveH": 1.0666666666666667,
+      "cars": 1,
+      "privP": 0,
+      "privD": 0,
+      "premium": 0,
+      "load": 0.15384615384615385,
+      "typ": 46.63
+     },
+     "r": 0.7175638001286725,
+     "t": 6964,
+     "postedAt": 6784,
+     "lastPickupAt": 11215,
+     "readyAt": 6769,
+     "urgent": 0
+    },
+    "chance": 0.015145588657682008
+   },
+   {
+    "input": {
+     "x": {
+      "nearP": 64,
+      "nearD": 1,
+      "nearP80": 503,
+      "nearD80": 45,
+      "driveH": 1.6333333333333333,
+      "cars": 1,
+      "privP": 1,
+      "privD": 1,
+      "premium": 0,
+      "load": 0.15625,
+      "typ": 57.4
+     },
+     "r": 3.0,
+     "t": 7561,
+     "postedAt": 7021,
+     "lastPickupAt": 10552,
+     "readyAt": 11160,
+     "urgent": 1
+    },
+    "chance": 0.13534197518112662
+   },
+   {
+    "input": {
+     "x": {
+      "nearP": 2,
+      "nearD": 5,
+      "nearP80": 2,
+      "nearD80": 29,
+      "driveH": 4.483333333333333,
+      "cars": 1,
+      "privP": 0,
+      "privD": 0,
+      "premium": 0,
+      "load": 1,
+      "typ": 118.74
+     },
+     "r": 0.9738925383190163,
+     "t": 6254,
+     "postedAt": 4154,
+     "lastPickupAt": 6690,
+     "readyAt": 4740,
+     "urgent": 0
+    },
+    "chance": 0.025089436805138574
+   },
+   {
+    "input": {
+     "x": {
+      "nearP": 357,
+      "nearD": 6,
+      "nearP80": 372,
+      "nearD80": 375,
+      "driveH": 0.6333333333333333,
+      "cars": 1,
+      "privP": 0,
+      "privD": 0,
+      "premium": 1,
+      "load": 0.08403361344537816,
+      "typ": 39.82
+     },
+     "r": 0.7169763937719739,
+     "t": 9143,
+     "postedAt": 6803,
+     "lastPickupAt": 11219,
+     "readyAt": 6788,
+     "urgent": 0
+    },
+    "chance": 0.006827331356462297
+   },
+   {
+    "input": {
+     "x": {
+      "nearP": 22,
+      "nearD": 43,
+      "nearP80": 22,
+      "nearD80": 45,
+      "driveH": 7.233333333333333,
+      "cars": 1,
+      "privP": 0,
+      "privD": 0,
+      "premium": 0,
+      "load": 0.09090909090909091,
+      "typ": 191.03
+     },
+     "r": 0.942993247133958,
+     "t": 3733,
+     "postedAt": 3733,
+     "lastPickupAt": 10845,
+     "readyAt": 4740,
+     "urgent": 0
+    },
+    "chance": 0.47323216758961434
+   },
+   {
+    "input": {
+     "x": {
+      "nearP": 28,
+      "nearD": 6,
+      "nearP80": 45,
+      "nearD80": 6,
+      "driveH": 8.166666666666666,
+      "cars": 1,
+      "privP": 0,
+      "privD": 0,
+      "premium": 0,
+      "load": 0.21428571428571427,
+      "typ": 206.78
+     },
+     "r": 1.7776380694457878,
+     "t": 3970,
+     "postedAt": 3790,
+     "lastPickupAt": 10790,
+     "readyAt": 3775,
+     "urgent": 0
+    },
+    "chance": 0.04645048609833671
+   },
+   {
+    "input": {
+     "x": {
+      "nearP": 441,
+      "nearD": 22,
+      "nearP80": 468,
+      "nearD80": 27,
+      "driveH": 1.5333333333333334,
+      "cars": 1,
+      "privP": 1,
+      "privD": 1,
+      "premium": 0,
+      "load": 0,
+      "typ": 57.14
+     },
+     "r": 0.6151557577878894,
+     "t": 2965,
+     "postedAt": 2665,
+     "lastPickupAt": 3540,
+     "readyAt": 3360,
+     "urgent": 0
+    },
+    "chance": 0.01672580760876284
+   },
+   {
+    "input": {
+     "x": {
+      "nearP": 3,
+      "nearD": 145,
+      "nearP80": 530,
+      "nearD80": 145,
+      "driveH": 6.4,
+      "cars": 1,
+      "privP": 0,
+      "privD": 0,
+      "premium": 0,
+      "load": 0.3333333333333333,
+      "typ": 168.05
+     },
+     "r": 1.2907468015471586,
+     "t": 2029,
+     "postedAt": 2029,
+     "lastPickupAt": 5136,
+     "readyAt": 3570,
+     "urgent": 0
+    },
+    "chance": 0.9553232804316483
+   },
+   {
+    "input": {
+     "x": {
+      "nearP": 355,
+      "nearD": 10,
+      "nearP80": 361,
+      "nearD80": 10,
+      "driveH": 9.183333333333334,
+      "cars": 1,
+      "privP": 0,
+      "privD": 0,
+      "premium": 0,
+      "load": 0.016901408450704224,
+      "typ": 249.78
+     },
+     "r": 1.1831611818400192,
+     "t": 8671,
+     "postedAt": 6811,
+     "lastPickupAt": 10728,
+     "readyAt": 6508,
+     "urgent": 0
+    },
+    "chance": 0.004573354950161263
+   },
+   {
+    "input": {
+     "x": {
+      "nearP": 12,
+      "nearD": 8,
+      "nearP80": 12,
+      "nearD80": 403,
+      "driveH": 6.4,
+      "cars": 1,
+      "privP": 0,
+      "privD": 0,
+      "premium": 0,
+      "load": 0.6666666666666666,
+      "typ": 139.69
+     },
+     "r": 1.877800844727611,
+     "t": 8328,
+     "postedAt": 6348,
+     "lastPickupAt": 10895,
+     "readyAt": 6333,
+     "urgent": 0
+    },
+    "chance": 0.011797916713239511
+   },
+   {
+    "input": {
+     "x": {
+      "nearP": 357,
+      "nearD": 2,
+      "nearP80": 372,
+      "nearD80": 2,
+      "driveH": 4.633333333333334,
+      "cars": 1,
+      "privP": 0,
+      "privD": 0,
+      "premium": 0,
+      "load": 0.028011204481792718,
+      "typ": 104.37
+     },
+     "r": 1.9942512216154067,
+     "t": 6907,
+     "postedAt": 6427,
+     "lastPickupAt": 11001,
+     "readyAt": 6412,
+     "urgent": 0
+    },
+    "chance": 0.038538771326158475
+   },
+   {
+    "input": {
+     "x": {
+      "nearP": 82,
+      "nearD": 4,
+      "nearP80": 82,
+      "nearD80": 40,
+      "driveH": 2.4833333333333334,
+      "cars": 1,
+      "privP": 0,
+      "privD": 0,
+      "premium": 0,
+      "load": 0.0975609756097561,
+      "typ": 82.21
+     },
+     "r": 0.8117017394477557,
+     "t": 3801,
+     "postedAt": 3801,
+     "lastPickupAt": 5370,
+     "readyAt": 4740,
+     "urgent": 0
+    },
+    "chance": 0.5992621719029739
+   },
+   {
+    "input": {
+     "x": {
+      "nearP": 329,
+      "nearD": 27,
+      "nearP80": 330,
+      "nearD80": 37,
+      "driveH": 1.8833333333333333,
+      "cars": 1,
+      "privP": 0,
+      "privD": 0,
+      "premium": 0,
+      "load": 0.0243161094224924,
+      "typ": 64.19
+     },
+     "r": 1.4686088175728307,
+     "t": 6039,
+     "postedAt": 5319,
+     "lastPickupAt": 6839,
+     "readyAt": 5304,
+     "urgent": 0
+    },
+    "chance": 0.18449427946642882
+   },
+   {
+    "input": {
+     "x": {
+      "nearP": 26,
+      "nearD": 2,
+      "nearP80": 26,
+      "nearD80": 2,
+      "driveH": 6.5,
+      "cars": 1,
+      "privP": 0,
+      "privD": 0,
+      "premium": 0,
+      "load": 0,
+      "typ": 130.25
+     },
+     "r": 0.6254126679462572,
+     "t": 6086,
+     "postedAt": 3386,
+     "lastPickupAt": 6569,
+     "readyAt": 4740,
+     "urgent": 0
+    },
+    "chance": 0.0008155558782645091
+   },
+   {
+    "input": {
+     "x": {
+      "nearP": 22,
+      "nearD": 5,
+      "nearP80": 446,
+      "nearD80": 5,
+      "driveH": 8.916666666666666,
+      "cars": 1,
+      "privP": 0,
+      "privD": 0,
+      "premium": 0,
+      "load": 0.22727272727272727,
+      "typ": 174.25
+     },
+     "r": 1.4202582496413199,
+     "t": 3331,
+     "postedAt": 2371,
+     "lastPickupAt": 3545,
+     "readyAt": 1980,
+     "urgent": 0
+    },
+    "chance": 0.08717296506371186
+   },
+   {
+    "input": {
+     "x": {
+      "nearP": 65,
+      "nearD": 20,
+      "nearP80": 67,
+      "nearD80": 35,
+      "driveH": 1.8833333333333333,
+      "cars": 1,
+      "privP": 0,
+      "privD": 0,
+      "premium": 1,
+      "load": 0.06153846153846154,
+      "typ": 53.82
+     },
+     "r": 1.0204384986993682,
+     "t": 9455,
+     "postedAt": 6815,
+     "lastPickupAt": 11166,
+     "readyAt": 6800,
+     "urgent": 0
+    },
+    "chance": 0.005131310157135044
+   },
+   {
+    "input": {
+     "x": {
+      "nearP": 399,
+      "nearD": 7,
+      "nearP80": 401,
+      "nearD80": 7,
+      "driveH": 4.316666666666666,
+      "cars": 1,
+      "privP": 0,
+      "privD": 0,
+      "premium": 0,
+      "load": 0.015037593984962405,
+      "typ": 102.32
+     },
+     "r": 0.8167513682564503,
+     "t": 6603,
+     "postedAt": 6603,
+     "lastPickupAt": 11020,
+     "readyAt": 6588,
+     "urgent": 0
+    },
+    "chance": 0.17758844386221487
+   },
+   {
+    "input": {
+     "x": {
+      "nearP": 420,
+      "nearD": 79,
+      "nearP80": 426,
+      "nearD80": 79,
+      "driveH": 6.616666666666666,
+      "cars": 1,
+      "privP": 0,
+      "privD": 0,
+      "premium": 0,
+      "load": 0.002380952380952381,
+      "typ": 185.55
+     },
+     "r": 1.366208569118836,
+     "t": 916,
+     "postedAt": 916,
+     "lastPickupAt": 2243,
+     "readyAt": 991,
+     "urgent": 0
+    },
+    "chance": 0.7280602548001391
+   },
+   {
+    "input": {
+     "x": {
+      "nearP": 410,
+      "nearD": 20,
+      "nearP80": 421,
+      "nearD80": 20,
+      "driveH": 9.416666666666666,
+      "cars": 1,
+      "privP": 0,
+      "privD": 0,
+      "premium": 0,
+      "load": 0.01707317073170732,
+      "typ": 140.47
+     },
+     "r": 1.434825941482167,
+     "t": 3957,
+     "postedAt": 3597,
+     "lastPickupAt": 6394,
+     "readyAt": 4740,
+     "urgent": 0
+    },
+    "chance": 0.07917868293424912
+   },
+   {
+    "input": {
+     "x": {
+      "nearP": 448,
+      "nearD": 28,
+      "nearP80": 468,
+      "nearD80": 28,
+      "driveH": 6.566666666666666,
+      "cars": 1,
+      "privP": 0,
+      "privD": 0,
+      "premium": 0,
+      "load": 0,
+      "typ": 148.7
+     },
+     "r": 1.1372562205783456,
+     "t": 6937,
+     "postedAt": 6577,
+     "lastPickupAt": 10886,
+     "readyAt": 6592,
+     "urgent": 0
+    },
+    "chance": 0.06356704654243371
+   },
+   {
+    "input": {
+     "x": {
+      "nearP": 156,
+      "nearD": 156,
+      "nearP80": 168,
+      "nearD80": 168,
+      "driveH": 0.31666666666666665,
+      "cars": 1,
+      "privP": 0,
+      "privD": 0,
+      "premium": 0,
+      "load": 0.00641025641025641,
+      "typ": 16.13
+     },
+     "r": 2.0,
+     "t": 6659,
+     "postedAt": 3559,
+     "lastPickupAt": 6839,
+     "readyAt": 4740,
+     "urgent": 1
+    },
+    "chance": 0.05202833670369044
+   },
+   {
+    "input": {
+     "x": {
+      "nearP": 56,
+      "nearD": 56,
+      "nearP80": 71,
+      "nearD80": 73,
+      "driveH": 0.13333333333333333,
+      "cars": 1,
+      "privP": 0,
+      "privD": 1,
+      "premium": 0,
+      "load": 0.03571428571428571,
+      "typ": 11.07
+     },
+     "r": 1.6729900632339656,
+     "t": 5213,
+     "postedAt": 3653,
+     "lastPickupAt": 6502,
+     "readyAt": 6360,
+     "urgent": 0
+    },
+    "chance": 0.07287256491271318
+   },
+   {
+    "input": {
+     "x": {
+      "nearP": 434,
+      "nearD": 6,
+      "nearP80": 440,
+      "nearD80": 483,
+      "driveH": 0.5833333333333334,
+      "cars": 1,
+      "privP": 0,
+      "privD": 0,
+      "premium": 0,
+      "load": 0.020737327188940093,
+      "typ": 27.07
+     },
+     "r": 0.879571481344662,
+     "t": 2916,
+     "postedAt": 2016,
+     "lastPickupAt": 11245,
+     "readyAt": 6375,
+     "urgent": 0
+    },
+    "chance": 0.1526820845625323
+   },
+   {
+    "input": {
+     "x": {
+      "nearP": 12,
+      "nearD": 49,
+      "nearP80": 156,
+      "nearD80": 528,
+      "driveH": 0.5833333333333334,
+      "cars": 1,
+      "privP": 0,
+      "privD": 0,
+      "premium": 0,
+      "load": 0.08333333333333333,
+      "typ": 31.3
+     },
+     "r": 0.9118210862619809,
+     "t": 9190,
+     "postedAt": 6788,
+     "lastPickupAt": 11245,
+     "readyAt": 6773,
+     "urgent": 0
+    },
+    "chance": 0.036813439531731044
+   }
+  ],
+  "win": [
+   {
+    "x": {
+     "pickup": "vantaa",
+     "delivery": "hyvinkaa",
+     "driveH": 0.5833333333333334,
+     "tradeIn": 0,
+     "privD": 0,
+     "sameDay": 1,
+     "nOpt": 3,
+     "trust": 0,
+     "lates": 0
+    },
+    "markup": 1.9,
+    "chance": 0.028192758248932408
+   },
+   {
+    "x": {
+     "pickup": "jyvaskyla",
+     "delivery": "jyvaskyla",
+     "driveH": 0.4166666666666667,
+     "tradeIn": 0,
+     "privD": 0,
+     "sameDay": 1,
+     "nOpt": 2,
+     "trust": 25,
+     "lates": 0
+    },
+    "markup": 1.5,
+    "chance": 0.8101769661732776
+   },
+   {
+    "x": {
+     "pickup": "helsinki",
+     "delivery": "espoo",
+     "driveH": 0.5333333333333333,
+     "tradeIn": 0,
+     "privD": 0,
+     "sameDay": 0,
+     "nOpt": 1,
+     "trust": 0,
+     "lates": 0
+    },
+    "markup": 1.542142857142857,
+    "chance": 0.1640189669860131
+   },
+   {
+    "x": {
+     "pickup": "hyvinkaa",
+     "delivery": "espoo",
+     "driveH": 0.7666666666666667,
+     "tradeIn": 0,
+     "privD": 0,
+     "sameDay": 1,
+     "nOpt": 1,
+     "trust": 0,
+     "lates": 0
+    },
+    "markup": 1.54,
+    "chance": 0.17033423278431004
+   },
+   {
+    "x": {
+     "pickup": "vantaa",
+     "delivery": "espoo",
+     "driveH": 0.4166666666666667,
+     "tradeIn": 0,
+     "privD": 0,
+     "sameDay": 1,
+     "nOpt": 2,
+     "trust": 0,
+     "lates": 0
+    },
+    "markup": 1.920344827586207,
+    "chance": 0.026783395072412355
+   },
+   {
+    "x": {
+     "pickup": "tampere",
+     "delivery": "vantaa",
+     "driveH": 1.7666666666666666,
+     "tradeIn": 0,
+     "privD": 0,
+     "sameDay": 1,
+     "nOpt": 1,
+     "trust": 25,
+     "lates": 0
+    },
+    "markup": 1.69,
+    "chance": 0.3034905297343469
+   },
+   {
+    "x": {
+     "pickup": "hyvinkaa",
+     "delivery": "helsinki",
+     "driveH": 0.75,
+     "tradeIn": 0,
+     "privD": 0,
+     "sameDay": 1,
+     "nOpt": 2,
+     "trust": 0,
+     "lates": 0
+    },
+    "markup": 1.39,
+    "chance": 0.3397085520290776
+   },
+   {
+    "x": {
+     "pickup": "vantaa",
+     "delivery": "kuopio",
+     "driveH": 4.05,
+     "tradeIn": 0,
+     "privD": 0,
+     "sameDay": 0,
+     "nOpt": 2,
+     "trust": 0,
+     "lates": 0
+    },
+    "markup": 1.63,
+    "chance": 0.30839627973116174
+   },
+   {
+    "x": {
+     "pickup": "helsinki",
+     "delivery": "espoo",
+     "driveH": 0.5333333333333333,
+     "tradeIn": 0,
+     "privD": 0,
+     "sameDay": 1,
+     "nOpt": 2,
+     "trust": 0,
+     "lates": 0
+    },
+    "markup": 1.9436666666666667,
+    "chance": 0.017963666128773863
+   },
+   {
+    "x": {
+     "pickup": "helsinki",
+     "delivery": "hyvinkaa",
+     "driveH": 0.75,
+     "tradeIn": 0,
+     "privD": 0,
+     "sameDay": 1,
+     "nOpt": 2,
+     "trust": 12,
+     "lates": 0
+    },
+    "markup": 1.49,
+    "chance": 0.4715644848144387
+   },
+   {
+    "x": {
+     "pickup": "vantaa",
+     "delivery": "jyvaskyla",
+     "driveH": 2.8833333333333333,
+     "tradeIn": 0,
+     "privD": 0,
+     "sameDay": 1,
+     "nOpt": 2,
+     "trust": 14,
+     "lates": 1
+    },
+    "markup": 1.5,
+    "chance": 0.753674935852278
+   },
+   {
+    "x": {
+     "pickup": "vantaa",
+     "delivery": "lahti",
+     "driveH": 1.05,
+     "tradeIn": 0,
+     "privD": 0,
+     "sameDay": 1,
+     "nOpt": 2,
+     "trust": 0,
+     "lates": 0
+    },
+    "markup": 1.67,
+    "chance": 0.2040744880726623
+   },
+   {
+    "x": {
+     "pickup": "ylivieska",
+     "delivery": "jyvaskyla",
+     "driveH": 2.8,
+     "tradeIn": 0,
+     "privD": 0,
+     "sameDay": 1,
+     "nOpt": 2,
+     "trust": 2,
+     "lates": 0
+    },
+    "markup": 1.934367816091954,
+    "chance": 0.030664380000474348
+   },
+   {
+    "x": {
+     "pickup": "raisio",
+     "delivery": "tampere",
+     "driveH": 1.8666666666666667,
+     "tradeIn": 0,
+     "privD": 0,
+     "sameDay": 1,
+     "nOpt": 1,
+     "trust": 3,
+     "lates": 1
+    },
+    "markup": 1.5,
+    "chance": 0.32969803561683153
+   },
+   {
+    "x": {
+     "pickup": "pori",
+     "delivery": "kokkola",
+     "driveH": 3.6333333333333333,
+     "tradeIn": 0,
+     "privD": 0,
+     "sameDay": 1,
+     "nOpt": 2,
+     "trust": 9,
+     "lates": 0
+    },
+    "markup": 1.524952380952381,
+    "chance": 0.6074021659888946
+   },
+   {
+    "x": {
+     "pickup": "espoo",
+     "delivery": "vantaa",
+     "driveH": 0.4166666666666667,
+     "tradeIn": 0,
+     "privD": 0,
+     "sameDay": 0,
+     "nOpt": 1,
+     "trust": 1,
+     "lates": 0
+    },
+    "markup": 1.7,
+    "chance": 0.054558605454172085
+   },
+   {
+    "x": {
+     "pickup": "pori",
+     "delivery": "hyvinkaa",
+     "driveH": 2.5166666666666666,
+     "tradeIn": 0,
+     "privD": 0,
+     "sameDay": 1,
+     "nOpt": 2,
+     "trust": 0,
+     "lates": 0
+    },
+    "markup": 1.69,
+    "chance": 0.04527387271229233
+   },
+   {
+    "x": {
+     "pickup": "vantaa",
+     "delivery": "raisio",
+     "driveH": 1.7,
+     "tradeIn": 0,
+     "privD": 0,
+     "sameDay": 1,
+     "nOpt": 3,
+     "trust": 0,
+     "lates": 0
+    },
+    "markup": 1.55,
+    "chance": 0.3165082339500066
+   },
+   {
+    "x": {
+     "pickup": "vaasa",
+     "delivery": "vantaa",
+     "driveH": 4.466666666666667,
+     "tradeIn": 0,
+     "privD": 0,
+     "sameDay": 1,
+     "nOpt": 2,
+     "trust": 0,
+     "lates": 0
+    },
+    "markup": 1.6,
+    "chance": 0.04751146146791972
+   },
+   {
+    "x": {
+     "pickup": "vaasa",
+     "delivery": "oulu",
+     "driveH": 3.9166666666666665,
+     "tradeIn": 0,
+     "privD": 0,
+     "sameDay": 1,
+     "nOpt": 2,
+     "trust": 1,
+     "lates": 0
+    },
+    "markup": 1.5,
+    "chance": 0.2553911143601883
+   },
+   {
+    "x": {
+     "pickup": "helsinki",
+     "delivery": "espoo",
+     "driveH": 0.5333333333333333,
+     "tradeIn": 0,
+     "privD": 0,
+     "sameDay": 1,
+     "nOpt": 2,
+     "trust": 10,
+     "lates": 0
+    },
+    "markup": 1.6,
+    "chance": 0.262553293103969
+   },
+   {
+    "x": {
+     "pickup": "raisio",
+     "delivery": "turku",
+     "driveH": 0.13333333333333333,
+     "tradeIn": 0,
+     "privD": 0,
+     "sameDay": 1,
+     "nOpt": 2,
+     "trust": 5,
+     "lates": 0
+    },
+    "markup": 1.5,
+    "chance": 0.4090845895455013
+   },
+   {
+    "x": {
+     "pickup": "pori",
+     "delivery": "tampere",
+     "driveH": 1.3666666666666667,
+     "tradeIn": 0,
+     "privD": 0,
+     "sameDay": 1,
+     "nOpt": 1,
+     "trust": 5,
+     "lates": 1
+    },
+    "markup": 1.39,
+    "chance": 0.5697609997173875
+   },
+   {
+    "x": {
+     "pickup": "espoo",
+     "delivery": "turku",
+     "driveH": 1.5333333333333334,
+     "tradeIn": 0,
+     "privD": 0,
+     "sameDay": 1,
+     "nOpt": 2,
+     "trust": 3,
+     "lates": 0
+    },
+    "markup": 1.6,
+    "chance": 0.2811358348619878
+   },
+   {
+    "x": {
+     "pickup": "vantaa",
+     "delivery": "kuopio",
+     "driveH": 4.05,
+     "tradeIn": 0,
+     "privD": 0,
+     "sameDay": 1,
+     "nOpt": 2,
+     "trust": 0,
+     "lates": 0
+    },
+    "markup": 1.49,
+    "chance": 0.5293308785249169
+   }
+  ]
+ }
+}

@@ -1,0 +1,447 @@
+{
+"best": {
+"steepStep": 0.4,
+"pairKm": 80,
+"steepOpen": 1.6,
+"lateFee": 0.84,
+"outageN": 5,
+"hardPrice": 0.14,
+"outageGap": 0.38,
+"openMax": 1.0,
+"pWeek": 0.04,
+"rampWindowH": 8.5,
+"dueMon": -0.005
+},
+"log": [
+{
+"round": 0,
+"best": {
+"steepStep": 0.4,
+"pairKm": 80,
+"steepOpen": 1.5
+},
+"v4": {
+"margin": 17882.816145833334,
+"z": 17882.816145833334,
+"ranked": 96,
+"n": 96,
+"worst": 0.9365079365079365,
+"orders": 437.9270833333333
+},
+"v5": {
+"margin": 16972.4121875,
+"z": 16251.27125,
+"ranked": 92,
+"n": 96,
+"worst": 0.8772277227722772,
+"orders": 441.53125
+}
+},
+{
+"round": 1,
+"best": {
+"steepStep": 0.4,
+"pairKm": 80,
+"steepOpen": 1.5,
+"lateFee": 0.84,
+"outageN": 5,
+"hardPrice": 0.14,
+"outageGap": 0.38
+},
+"v4": {
+"margin": 18123.21625,
+"z": 18123.21625,
+"ranked": 96,
+"n": 96,
+"worst": 0.9548693586698337,
+"orders": 439.5
+},
+"v5": {
+"margin": 17198.098020833335,
+"z": 17198.098020833335,
+"ranked": 96,
+"n": 96,
+"worst": 0.907070707070707,
+"orders": 443.4270833333333
+}
+},
+{
+"round": 2,
+"best": {
+"steepStep": 0.4,
+"pairKm": 80,
+"steepOpen": 1.76,
+"lateFee": 0.84,
+"outageN": 5,
+"hardPrice": 0.14,
+"outageGap": 0.38,
+"openMax": 1.0
+},
+"v4": {
+"margin": 18238.7815625,
+"z": 18238.7815625,
+"ranked": 96,
+"n": 96,
+"worst": 0.9518348623853211,
+"orders": 444.0833333333333
+},
+"v5": {
+"margin": 17323.920104166667,
+"z": 17323.920104166667,
+"ranked": 96,
+"n": 96,
+"worst": 0.9054325955734407,
+"orders": 448.2291666666667
+}
+},
+{
+"round": 3,
+"best": {
+"steepStep": 0.4,
+"pairKm": 80,
+"steepOpen": 1.76,
+"lateFee": 0.84,
+"outageN": 5,
+"hardPrice": 0.14,
+"outageGap": 0.38,
+"openMax": 1.0
+},
+"v4": {
+"margin": 18459.089270833334,
+"z": 18459.089270833334,
+"ranked": 96,
+"n": 96,
+"worst": 0.9611872146118722,
+"orders": 442.8229166666667
+},
+"v5": {
+"margin": 17314.857291666667,
+"z": 17314.857291666667,
+"ranked": 96,
+"n": 96,
+"worst": 0.9093851132686084,
+"orders": 445.53125
+}
+},
+{
+"round": 4,
+"best": {
+"steepStep": 0.4,
+"pairKm": 80,
+"steepOpen": 1.6,
+"lateFee": 0.84,
+"outageN": 5,
+"hardPrice": 0.14,
+"outageGap": 0.38,
+"openMax": 1.0,
+"pWeek": 0.04,
+"rampWindowH": 8.5,
+"dueMon": -0.005
+},
+"v4": {
+"margin": 18459.089270833334,
+"z": 18459.089270833334,
+"ranked": 96,
+"n": 96,
+"worst": 0.9611872146118722,
+"orders": 442.8229166666667
+},
+"v5": {
+"margin": 17314.857291666667,
+"z": 17314.857291666667,
+"ranked": 96,
+"n": 96,
+"worst": 0.9093851132686084,
+"orders": 445.53125
+}
+},
+{
+"round": 5,
+"best": {
+"steepStep": 0.4,
+"pairKm": 80,
+"steepOpen": 1.6,
+"lateFee": 0.84,
+"outageN": 5,
+"hardPrice": 0.14,
+"outageGap": 0.38,
+"openMax": 1.0,
+"pWeek": 0.04,
+"rampWindowH": 8.5,
+"dueMon": -0.005
+},
+"v4": {
+"margin": 18481.866979166665,
+"z": 18481.866979166665,
+"ranked": 96,
+"n": 96,
+"worst": 0.9559164733178654,
+"orders": 436.53125
+},
+"v5": {
+"margin": 17587.670729166668,
+"z": 17587.670729166668,
+"ranked": 96,
+"n": 96,
+"worst": 0.9018036072144289,
+"orders": 439.65625
+}
+},
+{
+"round": 6,
+"best": {
+"steepStep": 0.4,
+"pairKm": 80,
+"steepOpen": 1.6,
+"lateFee": 0.84,
+"outageN": 5,
+"hardPrice": 0.14,
+"outageGap": 0.38,
+"openMax": 1.0,
+"pWeek": 0.04,
+"rampWindowH": 8.5,
+"dueMon": -0.005
+},
+"v4": {
+"margin": 18481.866979166665,
+"z": 18481.866979166665,
+"ranked": 96,
+"n": 96,
+"worst": 0.9559164733178654,
+"orders": 436.53125
+},
+"v5": {
+"margin": 17587.670729166668,
+"z": 17587.670729166668,
+"ranked": 96,
+"n": 96,
+"worst": 0.9018036072144289,
+"orders": 439.65625
+}
+},
+{
+"round": 7,
+"best": {
+"steepStep": 0.4,
+"pairKm": 80,
+"steepOpen": 1.6,
+"lateFee": 0.84,
+"outageN": 5,
+"hardPrice": 0.14,
+"outageGap": 0.38,
+"openMax": 1.0,
+"pWeek": 0.04,
+"rampWindowH": 8.5,
+"dueMon": -0.005
+},
+"v4": {
+"margin": 18481.866979166665,
+"z": 18481.866979166665,
+"ranked": 96,
+"n": 96,
+"worst": 0.9559164733178654,
+"orders": 436.53125
+},
+"v5": {
+"margin": 17587.670729166668,
+"z": 17587.670729166668,
+"ranked": 96,
+"n": 96,
+"worst": 0.9018036072144289,
+"orders": 439.65625
+}
+},
+{
+"round": 8,
+"best": {
+"steepStep": 0.4,
+"pairKm": 80,
+"steepOpen": 1.6,
+"lateFee": 0.84,
+"outageN": 5,
+"hardPrice": 0.14,
+"outageGap": 0.38,
+"openMax": 1.0,
+"pWeek": 0.04,
+"rampWindowH": 8.5,
+"dueMon": -0.005
+},
+"v4": {
+"margin": 18481.866979166665,
+"z": 18481.866979166665,
+"ranked": 96,
+"n": 96,
+"worst": 0.9559164733178654,
+"orders": 436.53125
+},
+"v5": {
+"margin": 17587.670729166668,
+"z": 17587.670729166668,
+"ranked": 96,
+"n": 96,
+"worst": 0.9018036072144289,
+"orders": 439.65625
+}
+},
+{
+"round": 9,
+"best": {
+"steepStep": 0.4,
+"pairKm": 80,
+"steepOpen": 1.6,
+"lateFee": 0.84,
+"outageN": 5,
+"hardPrice": 0.14,
+"outageGap": 0.38,
+"openMax": 1.0,
+"pWeek": 0.04,
+"rampWindowH": 8.5,
+"dueMon": -0.005
+},
+"v4": {
+"margin": 18481.866979166665,
+"z": 18481.866979166665,
+"ranked": 96,
+"n": 96,
+"worst": 0.9559164733178654,
+"orders": 436.53125
+},
+"v5": {
+"margin": 17587.670729166668,
+"z": 17587.670729166668,
+"ranked": 96,
+"n": 96,
+"worst": 0.9018036072144289,
+"orders": 439.65625
+}
+},
+{
+"round": 10,
+"best": {
+"steepStep": 0.4,
+"pairKm": 80,
+"steepOpen": 1.6,
+"lateFee": 0.84,
+"outageN": 5,
+"hardPrice": 0.14,
+"outageGap": 0.38,
+"openMax": 1.0,
+"pWeek": 0.04,
+"rampWindowH": 8.5,
+"dueMon": -0.005
+},
+"v4": {
+"margin": 18481.866979166665,
+"z": 18481.866979166665,
+"ranked": 96,
+"n": 96,
+"worst": 0.9559164733178654,
+"orders": 436.53125
+},
+"v5": {
+"margin": 17587.670729166668,
+"z": 17587.670729166668,
+"ranked": 96,
+"n": 96,
+"worst": 0.9018036072144289,
+"orders": 439.65625
+}
+},
+{
+"round": 11,
+"best": {
+"steepStep": 0.4,
+"pairKm": 80,
+"steepOpen": 1.6,
+"lateFee": 0.84,
+"outageN": 5,
+"hardPrice": 0.14,
+"outageGap": 0.38,
+"openMax": 1.0,
+"pWeek": 0.04,
+"rampWindowH": 8.5,
+"dueMon": -0.005
+},
+"v4": {
+"margin": 18481.866979166665,
+"z": 18481.866979166665,
+"ranked": 96,
+"n": 96,
+"worst": 0.9559164733178654,
+"orders": 436.53125
+},
+"v5": {
+"margin": 17587.670729166668,
+"z": 17587.670729166668,
+"ranked": 96,
+"n": 96,
+"worst": 0.9018036072144289,
+"orders": 439.65625
+}
+},
+{
+"round": 12,
+"best": {
+"steepStep": 0.4,
+"pairKm": 80,
+"steepOpen": 1.6,
+"lateFee": 0.84,
+"outageN": 5,
+"hardPrice": 0.14,
+"outageGap": 0.38,
+"openMax": 1.0,
+"pWeek": 0.04,
+"rampWindowH": 8.5,
+"dueMon": -0.005
+},
+"v4": {
+"margin": 18481.866979166665,
+"z": 18481.866979166665,
+"ranked": 96,
+"n": 96,
+"worst": 0.9559164733178654,
+"orders": 436.53125
+},
+"v5": {
+"margin": 17587.670729166668,
+"z": 17587.670729166668,
+"ranked": 96,
+"n": 96,
+"worst": 0.9018036072144289,
+"orders": 439.65625
+}
+},
+{
+"round": 13,
+"best": {
+"steepStep": 0.4,
+"pairKm": 80,
+"steepOpen": 1.6,
+"lateFee": 0.84,
+"outageN": 5,
+"hardPrice": 0.14,
+"outageGap": 0.38,
+"openMax": 1.0,
+"pWeek": 0.04,
+"rampWindowH": 8.5,
+"dueMon": -0.005
+},
+"v4": {
+"margin": 18481.866979166665,
+"z": 18481.866979166665,
+"ranked": 96,
+"n": 96,
+"worst": 0.9559164733178654,
+"orders": 436.53125
+},
+"v5": {
+"margin": 17587.670729166668,
+"z": 17587.670729166668,
+"ranked": 96,
+"n": 96,
+"worst": 0.9018036072144289,
+"orders": 439.65625
+}
+}
+]
+}

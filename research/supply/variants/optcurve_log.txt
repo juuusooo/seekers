@@ -1,0 +1,36 @@
+round 1/16: 24 curves, best so far +191 (trial 0)
+round 2/16: 48 curves, best so far +278 (trial 32)
+round 3/16: 72 curves, best so far +278 (trial 32)
+round 4/16: 96 curves, best so far +278 (trial 32)
+round 5/16: 120 curves, best so far +278 (trial 32)
+round 6/16: 144 curves, best so far +296 (trial 131)
+round 7/16: 168 curves, best so far +296 (trial 131)
+round 8/16: 192 curves, best so far +296 (trial 131)
+round 9/16: 216 curves, best so far +296 (trial 131)
+round 10/16: 240 curves, best so far +296 (trial 131)
+round 11/16: 264 curves, best so far +296 (trial 131)
+round 12/16: 288 curves, best so far +296 (trial 131)
+round 13/16: 312 curves, best so far +296 (trial 131)
+round 14/16: 336 curves, best so far +296 (trial 131)
+round 15/16: 360 curves, best so far +296 (trial 131)
+round 16/16: 384 curves, best so far +296 (trial 131)
+
+Search weeks: gain of the linear rule as a curve (trial 0): +191
+
+curve             search | held out  v4 margin    ±  T margin    ± T ranked T worst
+linear              +191 |      +53        +31   54       +18   60      156    89.8
+top1_t131           +296 |     +174        +64   55       +72   56      157    90.3
+top2_t32            +278 |     +194       +108   49       +71   55      157    90.2
+top3_t68            +274 |      +74       +131   56       -27   54      157    90.3
+top4_t301           +273 |     +157       +109   46       +43   56      157    90.3
+top5_t211           +273 |      +65        +38   57       +37   57      155    89.0
+mid_of_top10         +81 |     +120        +87   46       +24   52      156    89.8
+
+Settings:
+  linear backK=6,backAt=0.04,backDown=0.08
+  top1_t131 curve=1,cDown=0.1263,cLo=0.060152,cSteep=1.1402,cDead=0.0051986,cSpan=0.032301,cPow=0.53329,cCap=0.38608
+  top2_t32 curve=1,cDown=0.1422,cLo=0.059627,cSteep=1.0451,cDead=0.0070479,cSpan=0.029905,cPow=0.95849,cCap=0.34285
+  top3_t68 curve=1,cDown=0.12183,cLo=0.066011,cSteep=1.4651,cDead=0.0049678,cSpan=0.022368,cPow=1.3904,cCap=0.31012
+  top4_t301 curve=1,cDown=0.12295,cLo=0.058834,cSteep=1.062,cDead=1.7603e-05,cSpan=0.032216,cPow=0.67879,cCap=0.34383
+  top5_t211 curve=1,cDown=0.1307,cLo=0.060812,cSteep=1.2356,cDead=0.0049086,cSpan=0.034802,cPow=0.63312,cCap=0.37094
+  mid_of_top10 curve=1,cDown=0.12801,cLo=0.060684,cSteep=1.2276,cDead=0.0033843,cSpan=0.029784,cPow=0.77173,cCap=0.35903

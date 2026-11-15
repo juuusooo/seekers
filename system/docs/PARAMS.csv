@@ -1,0 +1,64 @@
+parameter,value,group,unit,meaning,tested alternatives (a week vs this value)
+minBookChance,0.95,which options,chance,Sell at the normal price only if a driver books in time with this chance,"0.93 -29, 0.97 -581 (tuner t-)"
+hardChance,0.82,which options,chance,Between this and minBookChance: sell but dearer,"0.80 -36, 0.90 -122"
+hardPrice,0.2,which options,x list,Price rise for such a hard option (0 = drop them),"0.1 -134 (h-), 0.3 -192 (u-)"
+minProfit,0.1,which options,share,Price must be at least (1 + this) x expected fee,tuner: no better
+minSlackH,3,which options,hours,Deadline must leave this many hours beyond the drive,"4: -19 (m-), -110 (t-)"
+capPerDriver,3,capacity,x drivers,Town is full at this many of our undelivered orders per driver living near it,"2.26 +34, 3.99 +1 (t-)"
+dueCapPer,0.1,capacity,x drivers,Deadline day is full at this x the week's drivers of our orders due that day,"0.09 -194 (h-), 0.08 -327 (t-)"
+fullPrice,0.25,capacity,x list,Price rise on a full town or full day,tuner: no better
+markupMin,1.28,price,x list,Lowest price multiple searched,"1.24 -126, 1.32 -244 (u-, 64 weeks)"
+markupMax,2,price,x list,Highest price multiple searched,"1.8 -51, 2.2 -24"
+capLam,4,price,EUR per driver-hour,Capacity cost subtracted in the price choice,"3 -77, 5 -283 (u-, 64 weeks); 6 -584, 8 -584"
+capConst,1,price,hours,Hours added to the drive in the capacity cost,"0 (capLam 5) -108 (h-), 2 (capLam 3) -80"
+pairBack,0.05,price,x list,Price cut for a round trip with an open gig of ours,0.10 +34 ± 68
+outage,0.3,price,x list,Price rise where the competitor is down,"0.45 -84, 0.5 +50"
+outageN,6,price,answers,Answers near the pickup today needed to call an outage,
+outageGap,0.3,price,share,How much they must beat the win model,
+worldN,300,learning,answers,Answers the week's price level is learned from,"150 -255 (h-), 600 -66 (m-)"
+lateCost,4,fees,x typical,Cost of a gig without a driver in the fee plan,"3 -120, 5.3 -301 (t-)"
+openMin,0.706,fees,x typical,Lowest opening fee,"0.5 -841, 0.7 +28"
+openMax,1.6,fees,x typical,Highest opening fee,1.4 / 1.8 no change
+raiseMax,0.2,fees,x typical per hour,Highest hourly raise,"0.15 -19, 0.25 no change"
+steps,4,fees,raises,Number of hourly raises,
+rampTop,1.45,fees,x typical,Early ramp target,"1.4 +8, 1.8 -195"
+rampWindowH,10,fees,hours,Early ramp starts this many hours before the last pickup time,"7 -84, 13 -135"
+steepOpen,1.3,fees,x typical,First fee after a deadline warning,"1.15 -198, 1.45 -108"
+steepStep,0.15,fees,x typical per 30 min,Raise after a deadline warning,"0.1 +84, 0.2 -2"
+lateFee,0.832,fees,x typical,Fee once the last pickup time has passed (0 = off),"1.0 +21 (m-), 1.4 -148"
+pairKm,40,pairs,km,Max distance from the first car's delivery to the second car's pickup,45: -30
+pairSlackH,6,pairs,hours,Spare hours needed for a two-car gig,4: -123
+pairCap,0.9,pairs,x sum of typical,Opening cap of a two-car gig,"0.85 -232, 0.95 -167"
+pairTop,1.3,pairs,x sum of typical,Early ramp target of a two-car gig,
+pairHoldH,3,pairs,hours,An unbooked two-car gig is split after this many hours,"2.5 -198, 5.5 -180"
+typMinN,5,typical fee,lanes,Lanes seen fewer times keep the dealer's typical fee,
+costW,1.25,,,"weight of the realized-cost trees in the cost of the price choice (BEST9; 0 = plan fee only, BEST8)",
+costUp,0,,,lean of that estimate toward its 80th percentile (0 = the mean),
+noteHours,1,,,"(BEST7) 1 = read the real site hours in the note: stop windows inside them (engine), price and fees count the shorter days",
+hoursMinLeftH,1.5,,,… a day's slot with less than this many hours left is skipped for the next day's (engine),
+pairFlags,1,,,(BEST7) 1 = an order whose note says no plates or manual gearbox is not joined into a two-car gig (engine),
+priceLearn,1,,,1 = prices from the online filter (BEST5); 0 = the win model of BEST4,
+pS,0.1,,,how sharp the dealer's choice is around the competitor's price (log price),
+pWeek,0.05,,,"how far a week's level can sit from the average (SD, log price)",
+pDay,0.14,,,… a weekday's level from the week's,
+pDealer,0,,,… a dealer's level this week (0 = not learned),
+pLane,0.06,,,"(BEST14; 0 = BEST13) … a lane's level this week (pickup x delivery town, single cars): one more level of the filter, added when the lane is first asked",
+pTown,0,,,… a pickup or delivery town's level this week (0 = not learned),
+dueMon,-0.03,,,price shift (× list) for an option due on the next Monday or later,
+dueFri,0.08,,,… for an option due on Friday,
+floorLvl,1,,,"(BEST10) the lowest price follows the learned competitor level: markupMin + this x (week + weekday level, log price) when that level is below average (0 = fixed floor, BEST9)",
+openTilt,0,,,"(BEST15: 0 = no tilt, for on time; BEST11 to BEST14 played 0.25) fees by gig size: the normal schedule x (tiltRef EUR / typical fee)^this, between 0.67 and 1.5",
+tiltRef,60,,,"… the typical fee (EUR a car) that keeps its fees: cheaper gigs get a higher multiple, dearer ones a lower",
+outBayes,1,,,(BEST12; 0 with outageK=0 = BEST11) 1 = the outage is a belief over regions from today's answers (replaces the outageN / outageGap rule); needs outageK,
+warBayes,0,,,(kit-out) 1 = the price-war day is one more state of that belief (competitor x warK everywhere),
+warK,0.8,,,"… the competitor's price on the price-war day, x its usual price",
+warFloor,0.2,,,… how far the price floor falls on a sure price-war day (x list),
+outPriorMax,0.6,,,"… the most belief an outage today gets before any answer (1 / working days left, capped)",
+outageK,1.2,,,"(BEST12; proof value 1.2, handbook says 1.3) in a detected outage the dealer's other choice is a backup this many x the competitor's price: the win chance is read against that price (1.3 = the handbook; 0 = off, only the `outage` floor shift)",
+floorTyp,0,,,(kit-out) lower price floor for cars that are cheap to move: floor shift -this x (floorTypRef - typical fee / list price) when positive,
+floorTypRef,0.8,,,… the typical fee / list price below which the floor starts to fall,
+feeMon,1,,,fees by posting day: all planned fees x this for a gig posted on the first Monday,
+feeMid,1,,,… posted on Tuesday or Wednesday,
+feeLate,0.95,,,(BEST13; 1 = BEST12) … posted from Thursday on,
+bookShift,0.2,,,(BEST16; 0 = BEST15) the fee schedules assume drivers book a little sooner: added to the booking model's hourly logit in the fee plan,
+bookQuote,0,,,"1 = that shift also counts in the price choice and in which options are sold (more orders, costs on time: not used)",

@@ -1,0 +1,10 @@
+base
+due11 dueCapPer=0.11
+due18 dueCapPer=0.18
+lateW1 lateW=1
+lateW1.5 lateW=1.5
+due18+lateW1 dueCapPer=0.18,lateW=1
+due18+lateW1+cap0.5 dueCapPer=0.18,lateW=1,capConst=0.5
+due18+lateW1.5+floor1.20 dueCapPer=0.18,lateW=1.5,markupMin=1.2
+L backK=6,backAt=0.04,backDown=0.08
+due18+lateW1+L dueCapPer=0.18,lateW=1,backK=6,backAt=0.04,backDown=0.08

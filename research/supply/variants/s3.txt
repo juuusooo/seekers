@@ -1,0 +1,16 @@
+base
+L backK=6,backAt=0.04,backDown=0.08
+W wkMon=-0.10,wkTue=-0.04
+C_floor1.2 markupMin=1.2
+C_due0.11 dueCapPer=0.11
+L+W backK=6,backAt=0.04,backDown=0.08,wkMon=-0.10,wkTue=-0.04
+L+due0.11 backK=6,backAt=0.04,backDown=0.08,dueCapPer=0.11
+W+due0.11 wkMon=-0.10,wkTue=-0.04,dueCapPer=0.11
+L+W+due0.11 backK=6,backAt=0.04,backDown=0.08,wkMon=-0.10,wkTue=-0.04,dueCapPer=0.11
+L+floor1.2 backK=6,backAt=0.04,backDown=0.08,markupMin=1.2
+L_up_only backK=6,backAt=0.04,backDown=0
+L_down_only_proxy backK=6,backAt=0.04,backDown=0.08,fullPrice=0.25
+B_km80_g1 ballKm=80,ballGauss=1
+B_km80_g1+L ballKm=80,ballGauss=1,backK=6,backAt=0.04,backDown=0.08
+S_s0.2_at1.6 smoothS=0.2,smoothAt=1.6
+Q_capU0.2 capU=0.2

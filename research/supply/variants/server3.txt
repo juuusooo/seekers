@@ -1,0 +1,7 @@
+base
+L backK=6,backAt=0.04,backDown=0.08
+Lconvex backK=6,backAt=0.04,backDown=0.08,backPow=2,backUp=0.08
+Lopt curve=1,cDown=0.1422,cLo=0.059627,cSteep=1.0451,cDead=0.0070479,cSpan=0.029905,cPow=0.95849,cCap=0.34285
+late05 costAlt=5
+late10 costAlt=6
+late20 costAlt=7

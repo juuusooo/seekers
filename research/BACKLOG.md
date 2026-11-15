@@ -1,0 +1,21 @@
+# Backlog: ideas to test, best first
+
+Claim before starting (session and time in Claimed, or `log.py open`). Delete a row when tested (the result goes to LEDGER.md).
+
+| Idea | Why | Knob / where | Claimed |
+|---|---|---|---|
+| Flu day reaction: when 6+ booked gigs are dropped between 00:00 and 01:00, treat the day as flu (30% of drivers out) | flu day shows at 01:00 (243 of 1,600 world-days), lates due that day 9.4% vs 4.3%, about 4 extra lates a week, and we win as many orders as on a normal day ([flu](flu/LOG.md), ledger 14 Nov) | engine: count `gig_dropped` in the first hour of the day; then dearer same-day options / higher capacity cost / lower `dueCapPer` for that day, and no hourly raises 00:00 to 06:00 on the gigs that came back. Server test, fresh seeds, on BEST12 and BEST11 |  |
+| Deadline-note orders: 10% late though the note is read right (97.4%) | price or day cap too soft for a tighter deadline ([notes](notes/LOG.md)) | `algo.ts` quote: `due()`, `hardPrice` for noted deadlines |  |
+| More random-fee exploration weeks with the denoised fee, refit the booking model | model_d (explore only, denoised) was neutral (+36 ± 137); more data may help; never fit on own-policy weeks | `z-archive/kit-03` algos/explore.ts on the kit-best engine |  |
+| Safety for the final: tighter day cap / higher booking chance on T | 1 week in 20 to 25 unranked | `dueCapPer`, `minBookChance` (running on j-) |  |
+| Tuner results (o2) proved on h- seeds | coordinate search on t- seeds | `z-archive/kit-max/tune.py` |  |
+| Pool new orders up to 1 hour to form more pairs | offline 134 pairs possible vs 93 formed; but time on the board is valuable | engine win() |  |
+| Heavy-tailed day prior for the price-war day (-20%) | one day a week sits 0.22 below; a Gaussian prior learns it slowly | kit-price priceState |  |
+| Record ranking runs and the final (events, drivers, snapshot) | diagnosis after the run; reveal is closed for ranking runs | run.ts --board |  |
+| Fee plan with a measured cost-to-go: plan only K hours ahead, then use the realised cost of similar unbooked gigs (Uber Freight 2023) | model.json is 1.7x too hopeful under our policy, errors compound over the hourly plan; BEST9 did this on the price side (costW) and gained 644 | `core/model.ts` plan(): continuation value from `runs/gighours` by lane, hours left, weekday; screen on v4 and v5c |  |
+| Live driver-side level: compare this week's booking speed with the plan and shift all fees (Uber Freight 2021 controller) | we learn the competitor's level live, nothing on the driver side; week fee level SD 0.05; mainly on-time safety for the one final week | engine: ratio of booked to expected bookings so far, scale in the fee plan. 15 Nov: fee-level version dead in both sims (drv_learn, kit-learn); only the booking-speed version and a server run of `lrnFee=-1` are left, low odds |  |
+| Flat-EUR raises instead of multiples of the typical fee (Garg, Nazerzadeh: additive surge) | multiples make long gigs most worth waiting for; only 38% book at the opening fee | `algo.ts` schedule: raise step in EUR |  |
+| Level floor + lower base floor (`floorLvl=1,markupMin=1.22`) | +704 ± 192 on 12 screen weeks, sim +420 ± 57, but +25 to +29 orders: needs 48 fresh weeks on BEST10 and BEST9, watch ranked weeks | `kit-wild` or kit-best `--set markupMin=1.22` |  |
+| Price the roll-over: an option whose gig is unlikely to book on its posting day costs 1.12 to 1.26 x typical, not the plan's fee | 9 gigs a day roll over; raised + dropped + late orders cost 3,950 a week over the opening level; Juhus has almost no such tail from Thursday ([juhus_gap](juhus_gap/LOG.md) second session) | `algo.ts` quote: price shift x (1 - chance to book before midnight of the posting day), or `hardChance` on that chance |  |
+| Friday requests dearer (posted Friday: 1.10 x typical, Saturday bookings 25% dropped), opposite sign to `dueMon` for orders won on Friday | Juhus's Saturday / next Monday deliveries cost 57 / 62% of price, ours 72 / 64% | `dueMon` split by arrival day; test +0.03 / +0.06 for Friday arrivals |  |
+| Thursday-due load cap after a Wednesday price war / before a flu day | Juhus delivered 4.7k on the flu Thursday at 63% cost, we 6.0k at 69% | `dueCapPer` by day; with kit-flu |  |

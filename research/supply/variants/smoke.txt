@@ -1,0 +1,2 @@
+base
+allon wkMon=-0.10,wkTue=-0.04,dueCapPer=0.11,backK=6,backAt=0.04,backDown=0.08

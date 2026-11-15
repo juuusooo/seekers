@@ -1,0 +1,6 @@
+base dumpRows=1
+notree dumpRows=1,costW=0
+floor120 dumpRows=1,markupMin=1.2
+lam3 dumpRows=1,capLam=3
+lam5 dumpRows=1,capLam=5
+notree_floor135 dumpRows=1,costW=0,markupMin=1.35

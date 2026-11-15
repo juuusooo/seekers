@@ -1,0 +1,3 @@
+base
+BEST13 pLane=0
+BEST12 pLane=0,feeLate=1

@@ -1,0 +1,3 @@
+base
+L_linear backK=6,backAt=0.04,backDown=0.08
+L_as_curve curve=1,cDown=0.08,cLo=0.04,cSteep=3,cDead=0,cSpan=0.05,cPow=1,cCap=0.3
